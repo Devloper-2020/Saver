@@ -4,31 +4,43 @@ import { FiDollarSign, FiCheckCircle, FiRefreshCcw } from "react-icons/fi";
 import { FaNewspaper, FaTv, FaBroadcastTower, FaGlobeAsia } from "react-icons/fa";
 
 
-
-const slides = ["/img 1.jpg", "/img 2.jpg", "/img 3.jpg"];
-
+const slides = [
+  {
+    img: "/slide3.jpg",
+    caption:
+      "Helping Aussies for over 25 years with expert advice and unbeatable support. Trusted by more than 500,000 households across the country to find better energy and broadband deals.",
+  },
+  {
+    img: "/slide2.jpg",
+    caption:
+      "Quickly and easily compare electricity, gas, and broadband plans tailored to your needs. Discover the best value in minutes and make informed choices without the confusion.",
+  },
+  {
+    img: "/slide4.jpg",
+    caption:
+      "Switch providers stress-free with help from our local experts. Enjoy complete transparency, no hidden fees, and a 100% free service designed to save you time and money.",
+  },
+];
 
 const features = [
   {
     icon: <FiDollarSign className="text-green-600 w-12 h-12" />,
-    title: "Great Value",
+    title: "Exceptional Value",
     description:
-      "Save on your electricity bills. Compare and choose an energy provider through Energy Saver and save from your next bill.",
+      "Cut down your electricity costs by comparing top energy providers with Energy Saver start saving from your very next bill.",
   },
   {
     icon: <FiCheckCircle className="text-green-600 w-12 h-12" />,
-    title: "Great Choice",
+    title: "Extensive Options",
     description:
-      "With a wide range of electricity and gas providers to choose from, find a plan that works for you and your pocket.",
+      "Choose from a wide selection of electricity and gas plans to find the perfect fit for your lifestyle and budget.",
   },
   {
     icon: <FiRefreshCcw className="text-green-600 w-12 h-12" />,
-    title: "Easy to Switch",
+    title: "Seamless Switching",
     description:
-      "We make it easy to connect with the new retailer. Signup over the phone or digitally with our onshore team of experts.",
+      "Transitioning to a new provider is effortless sign up online or over the phone with help from our local expert team.",
   },
-
-  
 ];
 
 
@@ -66,159 +78,178 @@ export default function HomePage() {
 
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 font-sans">
-      {/* Hero Section */}
-    <section className="bg-yellow-100 py-16 px-6 sm:px-12 lg:px-24 rounded-b-[3rem] shadow-md">
-  <div className="max-w-7xl xl:max-w-[1440px] mx-auto flex flex-col md:flex-row items-center md:items-stretch gap-12 md:gap-20 xl:gap-32 2xl:gap-40">
+  <div className="min-h-screen bg-gray-100 text-gray-800 font-sans">
+  <section className="bg-white py-20 px-4 sm:px-8 md:px-12 lg:px-24 rounded-b-3xl shadow-md">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16 items-start">
+      
+      {/* Left: Image and Caption */}
+      <div className="flex flex-col items-center w-full space-y-6">
+        <div className="relative w-full max-w-[500px] h-[400px] sm:aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl bg-gray-200">
+          {slides.map((slide, idx) => (
+            <motion.img
+              key={idx}
+              src={slide.img}
+              alt={slide.caption || `Slide ${idx + 1}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: idx === current ? 1 : 0 }}
+              transition={{ duration: 0.8 }}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                idx === current ? "z-10" : "z-0"
+              }`}
+            />
+          ))}
 
-    {/* Left Content */}
-    <div className="flex-1 space-y-6 text-left flex flex-col justify-center">
-      <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-        Empowering Australians,{" "}
-        <span className="text-green-600"> to Save Time</span> Plans
-      </h1>
-      <p className="text-lg font-medium">
-        Stress, and Money for {" "}
-        <span className="underline decoration-green-700">Over 25 Years</span>{" "}
-        to compare.
-      </p>
-      <p className="text-base font-semibold text-gray-700 max-w-md">
-        Take charge of life’s key decisions with confidence. ⚡ Discover the best deals on Energy & Broadband — fast and fuss-free.
-        We've streamlined the comparison process so it's simpler than ever.
-        Over 500,000 smart connections and counting — proudly helping Australians compare and connect for more than a decade.
-      </p>
-
-      <div className="mt-6 rounded-3xl overflow-hidden border border-gray-300 shadow-lg w-full h-64 sm:h-80 md:h-96 lg:h-[400px]">
-        <motion.img
-          key={current}
-          src={slides[current]}
-          alt={`Slide ${current + 1}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className="w-full h-full object-cover"
-        />
-      </div>
-    </div>
-
-    {/* Right Form Card */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="bg-white border border-green-300 rounded-md shadow-lg w-full max-w-lg p-8 mx-auto flex flex-col justify-center"
-    >
-      {/* Scam Alert */}
-      <div className="bg-red-100 border-l-8 border-red-500 p-4 text-red-800 rounded-md mb-6">
-        <h3 className="font-bold text-lg mb-2">⚠️ BE AWARE OF SCAMS</h3>
-        <p className="text-sm leading-relaxed">
-          Please be aware of scam calls seeking you to download unknown
-          software or asking personal banking details.
-          <strong> Energy Saver will never ask you to do so.</strong> Call
-          us on{" "}
-          <a
-            href="tel:0391180426"
-            className="underline hover:text-red-700"
-          >
-            03 9118 0426
-          </a>{" "}
-          to report.
-        </p>
-      </div>
-
-      {/* Registration Form */}
-      <form className="flex flex-wrap items-center gap-6 justify-between">
-        <h2 className="w-full text-3xl font-extrabold text-green-700 mb-6">
-          Register For
-        </h2>
-
-        <div className="flex flex-wrap gap-3 flex-grow min-w-[280px] max-w-[600px] text-green-800 font-semibold">
-          <label className="w-full mb-2">
-            Select what you want to compare
-          </label>
-          <div className="flex flex-wrap gap-4">
-            {[
-              { id: "electricity", label: "Electricity" },
-              { id: "gas", label: "Gas" },
-              { id: "electricitygas", label: "Electricity & Gas" },
-              { id: "internet", label: "Broadband" },
-            ].map(({ id, label }) => (
-              <label
-                key={id}
-                htmlFor={id}
-                className="cursor-pointer flex items-center gap-2 bg-green-100 px-4 py-2 rounded-full border border-green-300 hover:bg-green-200 transition"
-              >
-                <input
-                  type="radio"
-                  id={id}
-                  name="compareOption"
-                  value={label}
-                  className="accent-green-600"
-                  required
-                />
-                {label}
-              </label>
+          {/* Dots */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrent(idx)}
+                className={`w-3 h-3 rounded-full ${
+                  idx === current ? "bg-[#032D4D]" : "bg-white"
+                } border border-[#032D4D] transition duration-300`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
             ))}
           </div>
         </div>
+      </div>
 
-        <div className="flex flex-wrap gap-6 flex-grow min-w-[320px] max-w-[700px]">
-          {[
-            { name: "name", placeholder: "Enter your full name", label: "Your Name", type: "text" },
-            { name: "email", placeholder: "Enter your email", label: "Your Email", type: "email" },
-            { name: "phone", placeholder: "Enter your phone number", label: "Phone", type: "tel" },
-            { name: "postcode", placeholder: "Enter your postcode", label: "Postcode", type: "text" },
-          ].map(({ name, placeholder, label, type }) => (
+    
+
+
+
+      {/* Right: Hero Text */}
+      <div className="flex flex-col w-full justify-center items-start text-left">
+  <div className="max-w-2xl">
+    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-left">
+      Empowering Australians to{" "}
+      <span className="text-green-600">Save Time & Money with the Right Plans</span>
+    </h1>
+    <p className="mt-6 text-lg text-Black font-medium text-left">
+  For over <span className="underline decoration-white-700">25 years</span>, we've been helping Aussies make informed decisions. 
+  Find the best deals quickly and easily join over 500,000 people who’ve already made the switch.Our mission is to save your time, money by comparing top providers . 
+   
+</p>
+
+  </div>
+</div>
+
+    </div><br/>
+     {/* Caption */}
+  <div className="w-full text-center min-h-[120px]" aria-live="polite">
+    <h3 className="text-xl md:text-2xl font-bold text-Black">Why Australians Choose Us</h3>
+    <p className="mt-2 text-gray-600">{slides[current].caption}</p>
+  </div>
+
+  </section>
+
+ <div className="w-full my-8 px-4 md:px-0 bg-[#032D4D] text-white">
+  {/* SCAM WARNING */}
+  <div className="py-8">
+    <h1 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wider text-center">
+      Beware of Scams
+    </h1>
+    <p className="mt-4 text-center text-base md:text-lg leading-relaxed">
+      Scam callers are falsely claiming to be from Utility Saver, asking customers to download unknown software or share banking information.
+      <span className="text-green-400 font-semibold"> Utility Saver will never ask you to do this.</span>
+      If you receive such a call, please report it immediately by calling us at{" "}
+      <a href="tel:0800123456" className="text-green-300 font-semibold underline"></a>.
+    </p>
+  </div>
+
+
+  <div className="text-center">
+    <h2 className="text-3xl font-bold text-white">
+      Get Your Free Comparison
+    </h2>
+  </div>
+<br/>
+  <motion.div className="w-full flex justify-center px-4">
+    <form
+      className="w-full max-w-3xl space-y-8"
+      onSubmit={(e) => e.preventDefault()}
+    >
+      {/* Compare Options */}
+      <div>
+        <label
+          htmlFor="compareOption"
+          className="block mb-3 font-semibold text-base"
+        >
+          What would you like to compare?
+        </label>
+        <div className="flex flex-wrap gap-4" id="compareOption">
+          {["Electricity", "Gas", "Electricity & Gas"].map((option) => (
             <label
-              key={name}
-              className="flex flex-col text-green-800 font-semibold min-w-[140px] flex-1"
+              key={option}
+              className="flex items-center gap-2 px-5 py-2 rounded-full bg-[#E6EDF3] border border-[#B3C3D2] cursor-pointer hover:bg-[#D4E0EB] transition text-[#032D4D] font-medium"
             >
-              {label}
               <input
-                type={type}
-                name={name}
+                type="radio"
+                name="compareOption"
+                value={option}
+                className="accent-[#032D4D]"
                 required
-                placeholder={placeholder}
-                className="mt-1 px-4 py-3 border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 transition"
               />
+              {option}
             </label>
           ))}
         </div>
+      </div>
 
-        <label className="flex items-start gap-3 text-green-800 font-semibold w-full">
+      {/* Input Fields */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {[{ name: "name", placeholder: "Full Name", type: "text" },
+          { name: "phone", placeholder: "Phone Number", type: "tel" },
+          { name: "email", placeholder: "Email Address", type: "email" },
+          { name: "postcode", placeholder: "Postcode", type: "text" },
+        ].map(({ name, placeholder, type }) => (
           <input
-            type="checkbox"
+            key={name}
+            id={name}
+            name={name}
+            type={type}
             required
-            className="mt-1 w-5 h-5 rounded border-green-300 focus:ring-2 focus:ring-green-400"
+            placeholder={placeholder}
+            className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
           />
-          <span>
-            By ticking this box, I provide my express consent for a
-           Energy Saver representative to contact me to review my
-            electricity and/or gas bills and negotiate a supply and sale
-            contract.
-          </span>
-        </label>
+        ))}
+      </div>
 
-        <button
-          type="submit"
-          className="bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition duration-300 font-semibold shadow-md w-full sm:w-auto px-12"
-        >
-          Register
-        </button>
-      </form>
-    </motion.div>
-  </div>
-</section>
+      {/* Consent Checkbox */}
+      <label className="flex items-start gap-3 text-sm leading-snug">
+        <input
+          type="checkbox"
+          required
+          className="mt-1 w-5 h-5 border-[#B3C3D2] rounded focus:ring-2 focus:ring-[#032D4D]"
+        />
+        By ticking this box, I provide my express consent for a Utility
+        representative to contact me to review my electricity and/or gas bills
+        and negotiate a supply and sale contract .
+      </label>
+
+      {/* Submit Button */}
+      <button
+        type="submit"
+        className="bg-sky-600 hover:bg-sky-700 text-white w-full py-4 rounded-md transition font-semibold text-lg shadow-sm"
+      >
+        Register Now
+      </button>
+    </form>
+  </motion.div>
 
 
+<br/>
+
+
+</div>
 
 {/* Benefits Section */}
-<section className="max-w-7xl mx-auto mt-24 px-6 sm:px-12 lg:px-24 ">
-  <h2 className="text-4xl sm:text-5xl font-extrabold text-green-700 mb-16 text-center tracking-tight leading-tight">
+<section className="max-w-7xl mx-auto mt-24 px-6 sm:px-12 lg:px-24">
+  <h2 className="text-4xl font-extrabold text-Black text-center">
     Benefits You Can Enjoy
   </h2>
-
+<br/>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
     {features.map(({ icon, title, description }, idx) => (
       <motion.div
@@ -227,12 +258,12 @@ export default function HomePage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: idx * 0.2 }}
         tabIndex={0}
-        className="bg-green-50 border border-green-100 rounded-3xl p-8 shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-300"
+        className="bg-[#E6EDF3] border border-[#C5D3E0] rounded-3xl p-8 shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#A5C4DB]"
         aria-label={title}
       >
-        <div className="mb-5 text-green-600 text-5xl">{icon}</div>
+        <div className="mb-5 text-[#032D4D] text-5xl">{icon}</div>
 
-        <h3 className="text-2xl font-bold text-green-800 mb-3 leading-snug tracking-wide">
+        <h3 className="text-2xl font-bold text-[#032D4D] mb-3 leading-snug tracking-wide">
           {title}
         </h3>
 
@@ -249,44 +280,45 @@ export default function HomePage() {
 {/* What Our Customers Say Section */}
 <section className="w-full bg-white mt-32 px-4 sm:px-8 lg:px-16 xl:px-24">
   <div className="max-w-7xl mx-auto space-y-12">
-    {/* Heading & Description */}
-    <div className="space-y-4 max-w-3xl">
-      <h2 className="text-4xl font-extrabold text-green-600">
-        What Our Customers Say
-      </h2>
-      <p className="text-gray-700 text-lg leading-relaxed">
-        We've helped thousands of Australians make smarter decisions with
-        their money. Whether it's choosing the best energy plan, internet
-        provider, or health insurance — our customers love how simple and
-        effective our service is. Take a look at their stories below.
-      </p>
-    </div>
+    {/* Heading & Description */}<br/> 
+   <div className="space-y-4 max-w-3xl mx-auto text-center">
+  <br/><h2 className="text-4xl font-extrabold text-Black">
+    What Our Customers Say
+  </h2>
+  <p className="text-gray-700 text-lg leading-relaxed text-justify">
+    We've helped thousands of Australians make smarter decisions with
+    their money. Whether it's choosing the best energy plan, internet
+    provider, or health insurance, our customers love how simple and
+    effective our service is. Take a look at their stories below.
+  </p>
+</div>
 
-    {/* Scroll container only — no buttons */}
+    {/* Scroll container only 
+     no buttons */}
     <div
-      className="overflow-x-auto pb-4 modern-scrollbar scroll-smooth scrollbar-thin scrollbar-thumb-green-500 scrollbar-track-gray-200"
+      className="overflow-x-auto pb-4 modern-scrollbar scroll-smooth scrollbar-thin scrollbar-thumb-black scrollbar-track-gray-200"
       tabIndex={0}
     >
       <div className="flex gap-6 min-w-full">
         {[
           {
             name: "Marsh",
-            title: "“Got the best health plan in minutes!”",
+            title: "Got the best health plan in minutes!",
             image: "/marsh.jpg",
           },
           {
             name: "Nicole",
-            title: "“Easy to compare, easier to save!”",
+            title: "Easy to compare, easier to save!",
             image: "/nicole.jpg",
           },
           {
             name: "Jason",
-            title: "“Switched energy plans and saved big.”",
+            title: "Switched energy plans and saved big.",
             image: "/jason.jpg",
           },
           {
             name: "Sophie",
-            title: "“Quick, clear, and totally stress-free.”",
+            title: "Quick, clear, and totally stress-free.",
             image: "/sophie.jpg",
           },
         ].map(({ name, title, image }) => (
@@ -338,87 +370,61 @@ export default function HomePage() {
     }
   `}</style>
 </section>
+<section className="w-full bg-[#032D4D] text-white py-20 px-4 sm:px-8 lg:px-16 xl:px-24 mt-24 rounded-t-[2.5rem]">
+  <div className="max-w-4xl mx-auto flex flex-col items-center space-y-10">
 
-
-
-{/* FAQ Section */}
-<section className="w-full bg-yellow-100 text-Green py-20 px-4 sm:px-8 lg:px-16 xl:px-24 mt-24 rounded-t-[2.5rem]">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
-    
-    {/* Left Image */}
-    <div className="flex justify-center md:justify-end mt-8 md:mt-15">
-      <img
-        src="/faq.jpg"
-        alt="FAQ"
-        className="w-full max-w-[500px] h-auto object-cover rounded-3xl shadow-2xl border-4 border-pink-300"
-      />
+    {/* Heading */}
+    <div className="flex flex-col items-center w-full space-y-4 text-center">
+      <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+        Frequently Asked Questions – <span className="text-[#00FFD1]">FAQ</span>
+      </h2>
     </div>
 
-    {/* Right Side: Heading + Button + FAQs */}
-    <div className="flex flex-col justify-center space-y-10 max-w-[550px] w-full">
-      
-      {/* Heading & CTA Button */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-          Frequently Asked Questions – <span className="text-pink-600">FAQ</span>
-        </h2>
-
-        <button
-          className="bg-gradient-to-r from-pink-500 via-pink-600 to-pink-700 hover:from-pink-600 hover:to-pink-800 text-white px-6 py-3 rounded-full font-semibold shadow-md focus:outline-none focus:ring-4 focus:ring-pink-300 transition"
+    {/* Accordion List */}
+    <div className="w-full space-y-6">
+      {[
+        {
+          question: "Which energy companies can I choose from in Australia?",
+          answer: `In Australia's deregulated market, you can choose from a wide range of authorised retailers...`,
+        },
+        {
+          question: "What’s the process to change my energy provider?",
+          answer: `Start by checking your current plan and recent bill...`,
+        },
+        {
+          question: "How do I find the right energy plan?",
+          answer: `The right plan varies by household...`,
+        },
+        {
+          question: "Why are energy prices increasing?",
+          answer: `Rising prices are driven by global events...`,
+        },
+        {
+          question: "What can I do to lower my energy costs?",
+          answer: `Cut costs by switching to LED lighting...`,
+        },
+      ].map((faq, index) => (
+        <details
+          key={index}
+          className="group border border-[#032D4D] rounded-xl bg-white/10 shadow-md hover:shadow-lg transition duration-300"
         >
-          View All FAQs
-        </button>
-      </div>
-
-      {/* Accordion List */}
-      <div className="space-y-6">
-        {[
-          {
-            question: "Which energy providers are available in Australia?",
-            answer: `In deregulated markets in Australia, many energy retailers are authorised to offer electricity, gas, or both. As of November 2024, authorised retailers include: 1st Energy, ActewAGL, AGL, Alinta Energy, Amber Electric, Origin Energy, Red Energy, Powershop, and many more. Not all plans are available everywhere, and iSelect doesn’t compare every provider or plan.`
-          },
-          {
-            question: "How do I switch energy providers?",
-            answer: `Start by reviewing your current plan and needs. Use a recent bill to compare new plans. Once you've chosen one, let iSelect know, and they'll manage the switch, including notifying your old provider. Switching can be seamless, especially if you’re not changing addresses.`
-          },
-          {
-            question: "What’s the best energy plan?",
-            answer: `There’s no single “best” plan—it depends on your needs. Consider household size, smart meter usage, solar panels, or bundling options. The best plan is the one that offers you the most value for your lifestyle and energy habits.`
-          },
-         
-          {
-            question: "Why have electricity prices gone up?",
-            answer: `Due to global crises (e.g. war in Ukraine), coal plant aging, and high demand, wholesale energy prices spiked. While prices have eased slightly, factors like the renewable transition and extreme weather still affect bills. Comparing and switching providers may help you save.`
-          },
-          {
-            question: "How do I save money on my energy bill?",
-            answer: `Try energy-saving tips: switch to LED bulbs, adjust heating/cooling settings, close curtains, upgrade your hot water system, or install solar panels. Also, compare plans to find a better-value deal.`
-          },
-
-    
-        ].map((faq, index) => (
-          <details
-            key={index}
-            className="group border border-pink-300 rounded-xl bg-white shadow-sm hover:shadow-md transition duration-300"
-          >
-            <summary className="flex justify-between items-center cursor-pointer px-6 py-4 text-base sm:text-lg font-semibold text-gray-900">
-              {faq.question}
-              <svg
-                className="w-6 h-6 text-pink-600 transition-transform duration-300 group-open:rotate-45"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-              </svg>
-            </summary>
-            <div className="px-6 pb-4 text-gray-700 text-sm sm:text-base whitespace-pre-line">
-              {faq.answer}
-            </div>
-          </details>
-        ))}
-      </div>
+          <summary className="flex justify-between items-center cursor-pointer px-6 py-4 text-base sm:text-lg font-semibold text-white">
+            {faq.question}
+            <svg
+              className="w-6 h-6 text-white transition-transform duration-300 group-open:rotate-45"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+          </summary>
+          <div className="px-6 pb-4 text-gray-200 text-sm sm:text-base whitespace-pre-line">
+            {faq.answer}
+          </div>
+        </details>
+      ))}
     </div>
   </div>
 </section>
@@ -431,7 +437,7 @@ export default function HomePage() {
 
 <section className="w-full bg-gray-50 mt-24 py-12 px-4 sm:px-8 lg:px-16 xl:px-24 overflow-hidden">
   <div className="max-w-7xl mx-auto text-center space-y-6">
-    <h2 className="text-3xl font-extrabold text-gray-800">Our Range of Providers</h2>
+    <h2 className="text-3xl font-extrabold text-black-800">Our Range of Providers</h2>
     <p className="text-gray-600 text-base max-w-xl mx-auto">
       We have great relationships with a wide range of Australia’s leading providers, from Energy to
       Car Insurance and from Health Insurance to Internet. Check out our full range of providers.
