@@ -223,8 +223,8 @@ export default function HomePage() {
           required
           className="mt-1 w-5 h-5 border-[#B3C3D2] rounded focus:ring-2 focus:ring-[#032D4D]"
         />
-        By ticking this box, I provide my express consent for a Utility
-        representative to contact me to review my electricity and/or gas bills
+        By ticking this box, I provide my express consent for a Utility Saver
+        representative to contact me to review my electricity and gas bills
         and negotiate a supply and sale contract .
       </label>
 
