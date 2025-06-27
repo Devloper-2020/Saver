@@ -13,7 +13,7 @@ import {
 
 export default function Contact() {
   return (
-    <div className="bg-[#032D4D] text-black min-h-screen py-12 px-6 md:px-12 lg:px-20">
+    <div className="bg-[#032D4D]  min-h-screen py-12 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
@@ -28,7 +28,7 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
           {/* Company Info Card */}
-          <div className="bg-white p-10 rounded-3xl shadow-lg border border-gray-200 space-y-8 hover:shadow-2xl transition-shadow duration-300">
+          <div className="bg-white  p-10 rounded-3xl shadow-lg border border-gray-200 space-y-8 hover:shadow-2xl transition-shadow duration-300">
             <h2 className="text-3xl font-semibold text-sky-700 drop-shadow-sm text-center ">Utility Saver  </h2><br/>
             <p className="text-gray-700 text-lg">
               <strong className="text-gray-900">ACN:</strong> 
@@ -107,7 +107,7 @@ export default function Contact() {
             method="POST"
             className="bg-white p-10 rounded-3xl shadow-lg border border-gray-200 space-y-8 hover:shadow-2xl transition-shadow duration-300"
           >
-            <h2 className="text-3xl font-semibold text-sky-700 drop-shadow-sm text-center">Send us a Message</h2>
+            <h2 className="text-3xl text-black font-semibold text-sky-700 drop-shadow-sm text-center">Send us a Message</h2>
 
             {/* Honeypot field for spam protection */}
             <input type="hidden" name="_gotcha" style={{ display: "none" }} />
