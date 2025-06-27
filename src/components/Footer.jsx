@@ -9,7 +9,7 @@ export default function Footer() {
         <div>
           <h2 className="text-2xl font-bold mb-5 tracking-wide">Utility Savers</h2>
           <p className="text-gray-300 text-sm leading-relaxed max-w-sm">
-            A truly independent Utility comparison and connection platform focused on saving money for Australian families.
+            A truly independent Utility bills comparison and connection platform focused on saving money for Australian families.
           </p>
         </div>
 
