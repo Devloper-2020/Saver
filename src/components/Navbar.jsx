@@ -16,8 +16,8 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const email = "contact@energysaver.com";
-  const phone = "+1-800-123-4567";
+  const email = "";
+  const phone = "";
   const timings = "Mon - Fri: 9:00 AM - 6:00 PM";
 
   const socialLinks = [
@@ -231,11 +231,8 @@ export default function Navbar() {
                     Compare & Save
                   </a>
                 </li>
-                <li>
-                  <a href="/connect" className="hover:text-blue-600 block py-2">
-                    Get Connected
-                  </a>
-                </li>
+             
+                
                 <li>
                   <a href="/contact" className="hover:text-blue-600 block py-2">
                     Contact Us
