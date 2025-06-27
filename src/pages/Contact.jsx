@@ -13,7 +13,7 @@ import {
 
 export default function Contact() {
   return (
-    <div className="bg-[#032D4D] text-white min-h-screen py-12 px-6 md:px-12 lg:px-20">
+    <div className="bg-[#032D4D] text-black min-h-screen py-12 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
