@@ -113,7 +113,7 @@ export default function Contact() {
             <input type="hidden" name="_gotcha" style={{ display: "none" }} />
 
             <div>
-              <label htmlFor="name" className="block mb-2 text-gray-700 font-medium text-lg">
+              <label htmlFor="name" className="block mb-2 text-black-700 font-medium text-lg">
                 Your Name
               </label>
               <input
@@ -121,13 +121,13 @@ export default function Contact() {
                 name="name"
                 type="text"
                 placeholder="John Doe"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-400 transition"
+                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-black-400 transition"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block mb-2 text-gray-700 font-medium text-lg">
+              <label htmlFor="email" className="block mb-2 text-black-700 font-medium text-lg">
                 Your Email
               </label>
               <input
@@ -135,13 +135,13 @@ export default function Contact() {
                 name="email"
                 type="email"
                 placeholder="you@example.com"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-400 transition"
+                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-black-400 transition"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="phone" className="block mb-2 text-gray-700 font-medium text-lg">
+              <label htmlFor="phone" className="block mb-2 text-black-700 font-medium text-lg">
                 Phone
               </label>
               <input
@@ -149,12 +149,12 @@ export default function Contact() {
                 name="phone"
                 type="tel"
                 placeholder="04XX XXX XXX"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-400 transition"
+                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-black-400 transition"
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="block mb-2 text-gray-700 font-medium text-lg">
+              <label htmlFor="message" className="block mb-2 text-black-700 font-medium text-lg">
                 Your Message
               </label>
               <textarea
@@ -162,7 +162,7 @@ export default function Contact() {
                 name="message"
                 rows={5}
                 placeholder="How can we help you?"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-400 transition resize-none"
+                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-black-400 transition resize-none"
                 required
               />
             </div>
