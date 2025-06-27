@@ -9,7 +9,7 @@ const HomeEnergy = () => {
   const formRef = useRef(null);
 
   const inputStyle =
-    'w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition';
+    'w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring--[#032D4D] transition';
 
   useEffect(() => {
     if (formRef.current) {
@@ -23,12 +23,12 @@ const HomeEnergy = () => {
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-yellow-50 py-16">
+      <section className="bg-[#032D4D] py-16">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
+          <strong><h1 className={` text-white text-4xl md:text-5xl`}>
             Home Energy Solution
-          </h1>
-          <p className="text-lg text-gray-600 mb-6">
+          </h1></strong><br/>
+          <p className="text-lg text-white mb-6">
             Compare electricity, gas, or broadband and save on your bills in just a few easy steps.
           </p>
          
@@ -37,20 +37,34 @@ const HomeEnergy = () => {
 
       {/* Form Section */}
       <section id="compare-form" className="bg-white pt-8 pb-16 min-h-screen flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-          {/* Left Image Synced to Form Height */}
+             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+               {/* Left Image Synced to Form Height */}
           <motion.div
-            style={{ height: formHeight || 'auto' }}
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="rounded-3xl overflow-hidden border-8 border-yellow-100 shadow-2xl flex justify-center"
-          >
-            <img
-              src="/home2.png"
-              alt="Energy Comparison"
-              className="object-cover w-full h-full max-h-[600px] md:min-h-[500px]"
-            />
+       style={{ height: formHeight || 'auto' }}
+       initial={{ opacity: 0, x: -30 }}
+       animate={{ opacity: 1, x: 0 }}
+       transition={{ duration: 0.5 }}
+       className="rounded-3xl overflow-hidden border-8 border-[#032D4D] shadow-2xl flex justify-center"
+     >
+       {/* Relative wrapper for image and overlay */}
+       <div className="relative w-full h-full">
+         <img
+           src="/s10.jpg"
+           alt="Energy Comparison"
+           className="object-cover w-full h-full max-h-[600px] md:min-h-[500px]"
+         />
+     
+         {/* Text Overlay at Bottom */}
+         <div className="absolute bottom-0 left-0 w-full bg-gray-200/90 text-black p-6 rounded-t-2xl">
+           <h3 className="text-xl font-bold">Compare Energy Plans</h3>
+           <p className="text-sm mt-2">
+             Find better rates and save more on electricity and gas. Switch in just a few clicks!
+           </p>
+         </div>
+       </div>
+   
+
+  
           </motion.div>
 
           {/* Right Form */}
@@ -72,8 +86,8 @@ const HomeEnergy = () => {
                   key={n}
                   className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full text-base sm:text-lg font-bold cursor-pointer select-none transition-all duration-300 ${
                     step === n
-                      ? 'bg-yellow-400 text-white shadow-lg'
-                      : 'bg-gray-200 text-gray-600 hover:bg-yellow-200 hover:text-yellow-600'
+                      ? 'bg-[#032D4D] text-white shadow-lg'
+                      : 'bg-gray-200 text-gray-600 hover:bg--[#032D4D] hover:text-[#032D4D]'
                   }`}
                   onClick={() => setStep(n)}
                 >
@@ -93,7 +107,7 @@ const HomeEnergy = () => {
               {/* Step 1 */}
               {step === 1 && (
                 <>
-                  <h3 className="text-xl font-semibold text-yellow-600 mb-4">Step 1: Register</h3>
+                  <h3 className="text-xl font-semibold text-black mb-4">Step 1: Register</h3>
                   <label className="font-medium mb-1">
                     Register For <span className="text-red-500">*</span>
                   </label>
@@ -125,7 +139,7 @@ const HomeEnergy = () => {
                         handleNext();
                       }
                     }}
-                    className="px-4 py-2 bg-yellow-600 text-white rounded"
+                    className="px-4 py-2 bg-[#032D4D]  text-white rounded"
                   >
                     Next
                   </button>
@@ -135,7 +149,7 @@ const HomeEnergy = () => {
               {/* Step 2 */}
               {step === 2 && (
                 <>
-                  <h3 className="text-xl font-semibold text-yellow-600 mb-4">Step 2: Usage Details</h3>
+                  <h3 className="text-xl font-semibold text-black mb-4">Step 2: Usage Details</h3>
                   {(comparisonType === 'Electricity' || comparisonType === 'Both') && (
                     <>
                       <h4 className="text-lg font-medium text-gray-700 mb-2">Electricity Usage</h4>
@@ -167,8 +181,8 @@ const HomeEnergy = () => {
                     </>
                   )}
                   <div className="flex justify-between mt-6">
-                    <button onClick={handleBack} className="px-4 py-2 bg-gray-300 rounded">Back</button>
-                    <button onClick={handleNext} className="px-4 py-2 bg-yellow-600 text-white rounded">Next</button>
+                    <button onClick={handleBack} className="px-4 py-2 bg-[#032D4D] text-white  rounded">Back</button>
+                    <button onClick={handleNext} className="px-4 py-2 bg-[#032D4D] text-white rounded">Next</button>
                   </div>
                 </>
               )}
@@ -176,7 +190,7 @@ const HomeEnergy = () => {
               {/* Step 3 */}
               {step === 3 && (
                 <>
-                  <h3 className="text-xl font-semibold text-yellow-600 mb-4">Step 3: Account Details</h3>
+                  <h3 className="text-xl font-semibold text-black mb-4">Step 3: Account Details</h3>
                   {(comparisonType === 'Electricity' || comparisonType === 'Both') && (
                     <input type="text" maxLength={11} placeholder="NMI (11-digit number)" className={inputStyle} />
                   )}
@@ -199,8 +213,8 @@ const HomeEnergy = () => {
                     <option>No</option>
                   </select>
                   <div className="flex justify-between mt-6">
-                    <button onClick={handleBack} className="px-4 py-2 bg-gray-300 rounded">Back</button>
-                    <button onClick={handleNext} className="px-4 py-2 bg-yellow-600 text-white rounded">Next</button>
+                    <button onClick={handleBack} className="px-4 py-2 bg-[#032D4D] text-white rounded">Back</button>
+                    <button onClick={handleNext} className="px-4 py-2 bg-[#032D4D] text-white rounded">Next</button>
                   </div>
                 </>
               )}
@@ -208,7 +222,7 @@ const HomeEnergy = () => {
               {/* Step 4 */}
               {step === 4 && (
                 <>
-                  <h3 className="text-xl font-semibold text-yellow-600 mb-4">Step 4: Contact & Upload</h3>
+                  <h3 className="text-xl font-semibold text-black mb-4">Step 4: Contact & Upload</h3>
                   {(comparisonType === 'Electricity' || comparisonType === 'Both') && (
                     <label className="block text-sm font-medium text-gray-700 mt-4">
                       Upload Electricity Bill
@@ -230,8 +244,8 @@ const HomeEnergy = () => {
                     to review my electricity and/or gas bills and negotiate a supply and sale contract.
                   </p>
                   <div className="flex justify-between mt-6">
-                    <button onClick={handleBack} className="px-4 py-2 bg-gray-300 rounded">Back</button>
-                    <button onClick={handleNext} className="px-4 py-2 bg-yellow-600 text-white rounded">Submit</button>
+                    <button onClick={handleBack} className="px-4 py-2 bg-[#032D4D] text-white rounded">Back</button>
+                    <button onClick={handleNext} className="px-4 py-2 bg-[#032D4D] text-white rounded">Submit</button>
                   </div>
                 </>
               )}
