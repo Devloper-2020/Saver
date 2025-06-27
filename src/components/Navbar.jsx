@@ -213,8 +213,7 @@ export default function Navbar() {
                         Business Energy
                       </a>
                     </li>
-                    <li>
-                     
+                    
                   </ul>
                 </details>
 
