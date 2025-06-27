@@ -214,15 +214,7 @@ export default function Navbar() {
                       </a>
                     </li>
                     <li>
-                      <a href="/solutions/commercial" className="hover:text-blue-500 block py-1 rounded">
-                        Commercial & Industrial
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/solutions/solar" className="hover:text-blue-500 block py-1 rounded">
-                        Solar & Battery
-                      </a>
-                    </li>
+                     
                   </ul>
                 </details>
 
