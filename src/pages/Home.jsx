@@ -18,7 +18,7 @@ const slides = [
   {
     img: "/slide4.jpg",
     caption:
-      "Switch providers stress-free with help from our local experts. Enjoy complete transparency, no hidden fees, and a 100% free service designed to save you time and money.",
+      "Switch providers stress free with help from our local experts. Enjoy complete transparency, no hidden fees, and a 100% free service designed to save you time and money.",
   },
 ];
 
