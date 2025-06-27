@@ -2,14 +2,21 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const inputStyle =
-  "w-full p-3 pl-10 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm transition-all bg-gray-50";
+  "w-full p-3 pl-10 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-y[#032D4D]-400 text-sm transition-all bg-gray-50";
 
 const iconStyle = "absolute left-3 top-3.5 w-5 h-5 text-yellow-400 pointer-events-none";
 
+
+
+
+
 export default function Compare() {
   const [step, setStep] = useState(1);
-   const [comparisonType, setComparisonType] = useState("");
+  
 const [showError, setShowError] = useState(false);
+const [comparisonType, setComparisonType] = useState("");
+const [customerType, setCustomerType] = useState("");
+
 
   const formRef = useRef(null);
   const [formHeight, setFormHeight] = useState(0);
@@ -48,7 +55,7 @@ const handleBack = () => {
     logo: "/agl.jpg",
     benefits: [
       "Local, 100% Australian customer support",
-      "Freedom with no lock-in contracts",
+      "Freedom with no lock in contracts",
       "Manage your energy anytime with My.ActewAGL portal",
     ],
     link: "#",
@@ -57,7 +64,7 @@ const handleBack = () => {
     name: "AGL",
     logo: "/agl.jpg",
     benefits: [
-      "Choose plans with built-in Netflix options",
+      "Choose plans with built in Netflix options",
       "Carbon-neutral energy choices",
       "Flexible, contract-free plans with variable rates",
     ],
@@ -68,7 +75,7 @@ const handleBack = () => {
     logo: "/logos/energyaustralia-logo.png",
     benefits: [
       "Award-winning support you can rely on",
-      "Leading the transition to renewables—no coal by 2040",
+      "Leading the transition to renewables no coal by 2040",
       "Full control of your account online, anytime",
     ],
     link: "#",
@@ -79,7 +86,7 @@ const handleBack = () => {
     benefits: [
       "No exit fees—ever",
       "Exclusive rewards for NRMA members",
-      "Eco-friendly, carbon-neutral energy options",
+      "Eco-friendly, carbon neutral energy options",
     ],
     link: "#",
   },
@@ -89,7 +96,7 @@ const handleBack = () => {
     benefits: [
       "100% Australian-owned and operated",
       "Unlock discounts from leading brands",
-      "Stay on top of your usage with an easy-to-use app",
+      "Stay on top of your usage with an easy to use app",
     ],
     link: "#",
   },
@@ -108,7 +115,7 @@ const handleBack = () => {
     logo: "/red energy.png",
     benefits: [
       "Proudly Australian-owned",
-      "Award-winning service from an all-Australian team",
+      "Award-winning service from an all Australian team",
       "24/7 plan management and energy tracking via app",
     ],
     link: "#",
@@ -117,7 +124,7 @@ const handleBack = () => {
 
   return (
     <>
-    <section className="relative bg-yellow-50 text-black pt-10 pb-20 px-4 sm:px-6 lg:px-12 overflow-hidden shadow-lg">
+    <section className="relative bg-[#032D4D] text-white pt-10 pb-20 px-4 sm:px-6 lg:px-12 overflow-hidden shadow-lg">
   {/* Background Shape */}
   <svg
     className="absolute top-0 right-0 w-64 h-64 text-amber-100 -z-10 rotate-12 opacity-60"
@@ -135,17 +142,17 @@ const handleBack = () => {
       transition={{ duration: 0.6 }}
       className="text-center md:text-left"
     >
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 drop-shadow-xl tracking-tight">
+      <h1 className="text-3xl  text-whitesm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 drop-shadow-xl tracking-tight">
         Compare Electricity & Gas Plans Easily
       </h1>
-      <p className="text-base sm:text-lg mb-6 text-gray-700 max-w-lg mx-auto md:mx-0">
+      <p className="text-base text-white sm:text-lg mb-6 text-gray-700 max-w-lg mx-auto md:mx-0">
         Save time and money by comparing Australia's top energy providers in just a few minutes.
       </p>
 
       {/* Providers */}
       <div className="mt-8">
-        <h2 className="text-xl sm:text-2xl font-bold text-emerald-800">Our Range of Providers</h2>
-        <p className="text-emerald-700 text-sm mt-2 max-w-md mx-auto md:mx-0">
+        <h2 className="text-xl sm:text-2xl font-bold text-emerald-800 text-white">Our Range of Providers</h2>
+        <p className="text-emerald-700 text-sm mt-2 max-w-md mx-auto md:mx-0 text-white">
           We work with Australia’s top providers to bring you great deals on energy, insurance and more.
         </p>
 
@@ -162,10 +169,10 @@ const handleBack = () => {
                 { name: "Latrobe", logo: "/latrobe.png" },
               ].map(({ name, logo }, idx) => (
                 <div key={idx} className="flex flex-col items-center min-w-[100px]">
-                  <div className="bg-white p-3 rounded-xl shadow-md hover:shadow-lg transition">
+                  <div className="bg-white  p-3 rounded-xl shadow-md hover:shadow-lg transition">
                     <img src={logo} alt={name} className="h-10 sm:h-12 w-auto object-contain" />
                   </div>
-                  <p className="mt-2 text-xs sm:text-sm font-medium text-emerald-800 text-center">{name}</p>
+                  <p className="mt-2 text-xs sm:text-sm font-medium text-white-800 text-center">{name}</p>
                 </div>
               ))
             )}
@@ -176,7 +183,7 @@ const handleBack = () => {
         <div className="mt-8">
           <button
             onClick={scrollToForm}
-            className="bg-amber-400 hover:bg-amber-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition hover:scale-105 active:scale-95"
+            className="bg-blue-600 text-white hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition hover:scale-105 active:scale-95"
           >
             Start Comparing
           </button>
@@ -185,10 +192,10 @@ const handleBack = () => {
     </motion.div>
     
 {/* Right Side - Image with Overlayed Step Text */}
-<div className="rounded-3xl overflow-hidden border-8 border-yellow-200 shadow-2xl">
+<div className="rounded-3xl overflow-hidden border-2 border-white shadow-2xl">
   {/* Step Guide Section */}
   <div className="mt-12 text-center"> {/* 👈 Add text-center here */}
-    <h3 className="text-2xl font-bold text-green mb-6">
+    <h3 className="text-2xl font-bold text-Black mb-6">
       Your Easy Energy Switch in 4 Simple Steps
     </h3>
 
@@ -200,8 +207,8 @@ const handleBack = () => {
           onClick={() => setStep(n)}
           className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
             step === n
-              ? "bg-yellow-500 text-white shadow-md"
-              : "bg-white text-yellow-600 border border-yellow-300 hover:bg-yellow-100"
+              ? "bg-blue-600 text-white text-white shadow-md"
+              : "bg-blue-600 text-white border border-blue-300 hover:bg-blue-900"
           }`}
         >
           Step {n}
@@ -236,7 +243,7 @@ const handleBack = () => {
         )}
         {step === 4 && (
           <p>
-            <strong>Sit back and relax:</strong> We’ll take care of the switch from start to finish. No paperwork, no hassle — just seamless setup.
+            <strong>Sit back and relax:</strong> We’ll take care of the switch from start to finish. No paperwork, no hassle just seamless setup.
           </p>
         )}
       </div>
@@ -268,20 +275,43 @@ const handleBack = () => {
 <section id="compare-form" className="bg-white pt-8 pb-16 min-h-screen flex items-center">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
     
-    {/* Left Image Synced to Form Height */}
-    <motion.div
-      style={{ height: formHeight || "auto" }}
-      initial={{ opacity: 0, x: -30 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="rounded-3xl overflow-hidden border-8 border-yellow-100 shadow-2xl flex justify-center"
-    >
-      <img
-        src="/compare1.jpg"
-        alt="Energy Comparison"
-        className="object-cover w-full h-full max-h-[600px] md:min-h-[500px]"
-      />
-    </motion.div>
+  {/* Left Image Synced to Form Height */}
+<motion.div
+  style={{ height: formHeight || "auto" }}
+  initial={{ opacity: 0, x: -30 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.5 }}
+  className="relative rounded-3xl overflow-hidden border-8 border-black-100 shadow-2xl flex justify-center"
+>
+  {/* Image */}
+  <img
+    src="/com.jpg"
+    alt="Energy Comparison"
+    className="object-cover w-full h-full max-h-[600px] md:min-h-[500px]"
+  />
+
+  {/* Full-width Text Overlay */}
+  <div className="absolute bottom-0 left-0 w-full bg-gray-200/90 text-black-900 p-6 rounded-t-xl">
+ <strong>   <h3 className="text-2xl font-bold">Compare Energy Plans</h3></strong>
+    <p className="text-sm mt-2">
+      Find better rates and save more on electricity and gas. Switch in just a few clicks!
+    </p>
+
+    <h4 className="text-sm font-semibold mt-4">Why Choose Us?</h4>
+    <ul className="list-disc list-inside text-sm mt-1 space-y-1">
+      <li>Access to top Australian energy providers</li>
+      <li>Quick and seamless switching process</li>
+      <li>No paperwork  we handle everything</li>
+      <li>100% free, independent comparisons</li>
+    </ul>
+
+    <strong><p className="text-xs mt-4 italic text-black-900">
+      Helping thousands of Aussies save every year — start your comparison now.
+    </p></strong>
+  </div>
+</motion.div>
+
+
 
     {/* Right Form */}
     <motion.div
@@ -291,21 +321,41 @@ const handleBack = () => {
       transition={{ duration: 0.5 }}
       className="bg-white shadow-2xl rounded-3xl p-6 sm:p-8 md:p-10 w-full flex flex-col"
     >
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6 sm:mb-8 tracking-wide text-center md:text-left">
-        Compare & Save on Energy Bills
-      </h2>
-
-      {/* Step Circles */}
+     <strong><h1 className={` text-black text-4xl md:text-5xl`}>
+     
+     Compare & Save on Energy Bills
+       </h1></strong><br/>
+        
+  {/* Step Circles */}
       <div className="flex gap-3 sm:gap-4 mb-8 justify-center md:justify-start flex-wrap">
         {[1, 2, 3, 4].map((n) => (
           <div
             key={n}
             className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full text-base sm:text-lg font-bold cursor-pointer select-none transition-all duration-300 ${
               step === n
-                ? "bg-yellow-400 text-white shadow-lg"
-                : "bg-gray-200 text-gray-600 hover:bg-yellow-200 hover:text-yellow-600"
+                ? "bg-[#032D4D] text-white shadow-lg"
+                : "bg-gray-200 text-gray-600 hover:bg-[#032D4D] hover:text-white"
             }`}
-            onClick={() => setStep(n)}
+            onClick={() => {
+              if (n === 1) {
+                setStep(1);
+              } else {
+                if (
+                  !comparisonType ||
+                  !customerType ||
+                  !name ||
+                  !email ||
+                  !phone ||
+                  !postcode
+                ) {
+                  setShowError(true);
+                  setStep(1);
+                } else {
+                  setShowError(false);
+                  setStep(n);
+                }
+              }
+            }}
           >
             {n}
           </div>
@@ -323,32 +373,65 @@ const handleBack = () => {
   
       {step === 1 && (
   <>
-    <h3 className="text-xl font-semibold text-yellow-600 mb-4">Step 1: Register</h3>
+    <h3 className="text-xl font-semibold text-whitemb-4">Step 1: Select services below</h3>
 
-    <label className="font-medium mb-1">
-      Register For <span className="text-red-500">*</span>
+
+   {/* First Dropdown - Comparison Type */}
+<label className="font-medium mb-1">
+  Choose For <span className="text-red-500">*</span>
+</label>
+{/* Comparison Type - Radio Buttons */}
+
+<div className="flex flex-wrap gap-4 mt-2">
+  {["Electricity", "Gas", "Both", "Broadband"].map((option) => (
+    <label key={option} className="flex items-center gap-2">
+      <input
+        type="radio"
+        name="comparisonType"
+        value={option}
+        checked={comparisonType === option}
+        onChange={(e) => setComparisonType(e.target.value)}
+        className="accent-blue-600"
+      />
+      {option === "Both" ? "Electricity & Gas" : option}
     </label>
-    <select
-      className={`${inputStyle} ${showError && !comparisonType ? 'border-red-500' : ''}`}
-      value={comparisonType}
-      onChange={(e) => setComparisonType(e.target.value)}
-      required
-    >
-      <option value="">Select what you want to compare</option>
-      <option value="Electricity">Electricity</option>
-      <option value="Gas">Gas</option>
-      <option value="Both">Electricity & Gas</option>
-      <option value="Broadband">Broadband</option>
-    </select>
+  ))}
+</div>
 
-    {showError && !comparisonType && (
-      <p className="text-red-500 text-sm mt-1">This field is required.</p>
-    )}
- <select className={inputStyle}>
-                <option>Select for what you are looking for ?</option>
-                <option>Commercial</option>
-                <option>Residential</option>
-              </select>
+
+{showError && !comparisonType && (
+  <p className="text-red-500 text-sm mt-1">This field is required.</p>
+)}
+
+{/* Radio Button Group - Looking For */}
+<label className="font-medium mt-4 block">
+  Looking For <span className="text-red-500"></span>
+</label>
+<div className="flex items-center gap-6">
+  <label className="flex items-center gap-2">
+    <input
+      type="radio"
+      name="customerType"
+      value="Commercial"
+      checked={customerType === "Commercial"}
+      onChange={(e) => setCustomerType(e.target.value)}
+      className="accent-blue-600"
+    />
+    Commercial
+  </label>
+  <label className="flex items-center gap-2">
+    <input
+      type="radio"
+      name="customerType"
+      value="Residential"
+      checked={customerType === "Residential"}
+      onChange={(e) => setCustomerType(e.target.value)}
+      className="accent-blue-600"
+    />
+    Residential
+  </label>
+</div>
+
     <input type="text" placeholder="Your Full Name" className={inputStyle} required />
     <input type="email" placeholder="Your Email" className={inputStyle} required />
     <input type="tel" placeholder="Your Phone Number" className={inputStyle} required />
@@ -363,65 +446,95 @@ const handleBack = () => {
           handleNext();
         }
       }}
-      className="px-4 py-2 bg-yellow-600 text-white rounded"
+      className="px-4 py-2 bg-blue-600 text-white rounded"
     >
       Next
     </button>
   </>
 )}
 
-      {/* Step 2 */}
-      {step === 2 && (
-        <>
-          <h3 className="text-xl font-semibold text-yellow-600 mb-4">Step 2: Usage Details</h3>
+ {/* Step 2 */}
+{step === 2 && (
+  <>
+    <h3 className="text-xl font-semibold text-white-600 mb-4">Step 2: Usage Details</h3>
 
-          {(comparisonType === "Electricity" || comparisonType === "Both") && (
-            <>
-              <h4 className="text-lg font-medium text-gray-700 mb-2">Electricity Usage</h4>
-              <select className={inputStyle}>
-                <option>Select Existing Electricity Retailer</option>
-                <option>Retailer A</option>
-                <option>Retailer B</option>
-              </select>
-              <div className="grid grid-cols-2 gap-4">
-                {["Peak", "Off Peak", "Shoulder", "Controlled Load", "Solar"].map((label) => (
-                  <React.Fragment key={label}>
-                    <input type="number" min="0" placeholder={`${label} Usage (kWh)`} className={inputStyle} />
-                    <input type="number" min="0" placeholder={`${label} Rate (c/kWh)`} className={inputStyle} />
-                  </React.Fragment>
-                ))}
-              </div>
-              <input type="number" min="0" placeholder="Electricity Monthly Spend ($)" className={inputStyle} />
-            </>
-          )}
+    {(comparisonType === "Electricity" || comparisonType === "Both") && (
+      <>
+        <h4 className="text-lg font-medium text-gray-700 mb-2">Electricity Usage</h4>
+        <select className={inputStyle}>
+          <option>Select Existing Electricity Retailer</option>
+          <option>Retailer A</option>
+          <option>Retailer B</option>
+        </select>
+        <div className="grid grid-cols-2 gap-4">
+          {["Peak", "Off Peak", "Shoulder", "Controlled Load", "Solar"].map((label) => (
+            <React.Fragment key={label}>
+              <input
+                type="text"
+                placeholder={`${label} Usage (e.g., 100kWh)`}
+                className={inputStyle}
+              />
+              <input
+                type="text"
+                placeholder={`${label} Rate (e.g., 30c/kWh)`}
+                className={inputStyle}
+              />
+            </React.Fragment>
+          ))}
+        </div>
+        <input
+          type="text"
+          placeholder="Electricity Monthly Spend (e.g., $200)"
+          className={inputStyle}
+        />
+      </>
+    )}
 
-          {(comparisonType === "Gas" || comparisonType === "Both") && (
-            <>
-              <h4 className="text-lg font-medium text-gray-700 mt-6 mb-2">Gas Usage</h4>
-              <select className={inputStyle}>
-                <option>Select Existing Gas Retailer</option>
-                <option>Retailer X</option>
-                <option>Retailer Y</option>
-              </select>
-              <input type="number" min="0" placeholder="Gas Monthly Spend ($)" className={inputStyle} />
-            </>
-          )}
+    {(comparisonType === "Gas" || comparisonType === "Both") && (
+      <>
+        <h4 className="text-lg font-medium text-gray-700 mt-6 mb-2">Gas Usage</h4>
+        <select className={inputStyle}>
+          <option>Select Existing Gas Retailer</option>
+          <option>Retailer X</option>
+          <option>Retailer Y</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Gas Monthly Spend (e.g., $100)"
+          className={inputStyle}
+        />
+      </>
+    )}
 
-          <div className="flex justify-between mt-6">
-            <button onClick={handleBack} className="px-4 py-2 bg-gray-300 rounded">
-              Back
-            </button>
-            <button onClick={handleNext} className="px-4 py-2 bg-yellow-600 text-white rounded">
-              Next
-            </button>
-          </div>
-        </>
-      )}
+    
+      {["Service to property Chagre Usuage", "Service to property Chagre Rate"].map((label) => (
+        <React.Fragment key={label}>
+          <input
+            type="text"
+            placeholder={`${label} Usage (e.g., 10 units)`}
+            className={inputStyle}
+          />
+        
+        </React.Fragment>
+      ))}
+  
+   
+    <div className="flex justify-between mt-6">
+      <button onClick={handleBack} className="px-4 py-2 bg-blue-600 text-white rounded">
+        Back
+      </button>
+      <button onClick={handleNext} className="px-4 py-2 bg-blue-600 text-white rounded">
+        Next
+      </button>
+    </div>
+  </>
+)}
+
 
       {/* Step 3 */}
       {step === 3 && (
         <>
-          <h3 className="text-xl font-semibold text-yellow-600 mb-4">Step 3: Account Details</h3>
+          <h3 className="text-xl font-semibold text-white-600 mb-4">Step 3: Bill Details</h3>
 
           {(comparisonType === "Electricity" || comparisonType === "Both") && (
             <input type="text" maxLength={11} placeholder="NMI (11-digit number)" className={inputStyle} />
@@ -449,55 +562,70 @@ const handleBack = () => {
           </select>
 
           <div className="flex justify-between mt-6">
-            <button onClick={handleBack} className="px-4 py-2 bg-gray-300 rounded">
+            <button onClick={handleBack} className="px-4 py-2 bg-blue-600 text-white rounded">
               Back
             </button>
-            <button onClick={handleNext} className="px-4 py-2 bg-yellow-600 text-white rounded">
+            <button onClick={handleNext} className="px-4 py-2 bg-blue-600 text-white rounded">
               Next
             </button>
           </div>
         </>
       )}
 
-      {/* Step 4 */}
-      {step === 4 && (
-        <>
-          <h3 className="text-xl font-semibold text-yellow-600 mb-4">Step 4: Contact & Upload</h3>
+{/* Step 4 */}
+{step === 4 && (
+  <>
+    <h3 className="text-xl font-semibold text-white-600 mb-2">Step 4: Contact & Upload</h3>
 
-          {comparisonType === "Electricity" || comparisonType === "Both" ? (
-            <label className="block text-sm font-medium text-gray-700 mt-4">
-              Upload Electricity Bill
-              <input type="file" className="mt-2 w-full rounded-md border border-gray-300 p-2" />
-            </label>
-          ) : null}
+    {(comparisonType === "Electricity" || comparisonType === "Both") && (
+      <div className="mt-2">
+        <label className="block text-sm font-medium text-gray-700">
+          Upload Electricity Bill
+          <input type="file" className="mt-1 w-full rounded-md border border-gray-300 p-2" />
+        </label>
+        <label className="flex items-center gap-2 text-sm mt-0.5">
+          <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
+          I don't have an electricity bill
+        </label>
+      </div>
+    )}
 
-          {comparisonType === "Gas" || comparisonType === "Both" ? (
-            <label className="block text-sm font-medium text-gray-700 mt-4">
-              Upload Gas Bill
-              <input type="file" className="mt-2 w-full rounded-md border border-gray-300 p-2" />
-            </label>
-          ) : null}
+    {(comparisonType === "Gas" || comparisonType === "Both") && (
+      <div className="mt-1.5">
+        <label className="block text-sm font-medium text-gray-700">
+          Upload Gas Bill
+          <input type="file" className="mt-1 w-full rounded-md border border-gray-300 p-2" />
+        </label>
+        <label className="flex items-center gap-2 text-sm mt-0.5">
+          <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
+          I don't have a gas bill
+        </label>
+      </div>
+    )}
 
-          <label className="flex items-center gap-2 text-sm mt-5">
-            <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
-            I agree to receive calls from UtilityDeals.
-          </label>
+    <label className="flex items-center gap-2 text-sm mt-1.5">
+      <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
+      I agree to receive calls from UtilitySaver.
+    </label>
 
-          <p className="text-xs text-gray-600 mt-2">
-            By ticking this box, I provide my express consent for a UtilityDeals representative to contact me
-            to review my electricity and/or gas bills and negotiate a supply and sale contract.
-          </p>
+    <p className="text-xs text-gray-600 mt-0.5">
+      ** By ticking this box, I provide my express consent for a UtilityDeals representative to contact me
+      to review my electricity and/or gas bills and negotiate a supply and sale contract.
+    </p>
+  
 
-          <div className="flex justify-between mt-6">
-            <button onClick={handleBack} className="px-4 py-2 bg-gray-300 rounded">
-              Back
-            </button>
-            <button onClick={handleNext} className="px-4 py-2 bg-yellow-600 text-white rounded">
-              Submit
-            </button>
-          </div>
-        </>
-      )}
+    <div className="flex justify-between mt-6">
+      <button onClick={handleBack} className="px-4 py-2 bg-blue-600 text-white rounded">
+        Back
+      </button>
+      <button onClick={handleNext} className="px-4 py-2 bg-blue-600 text-white rounded">
+        Submit
+      </button>
+    </div>
+  </>
+)}
+
+     
     
   
 
@@ -507,16 +635,16 @@ const handleBack = () => {
           </motion.div>
         </div>
       </section>
- <section className="bg-yellow-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-24 transition-colors duration-500">
-  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-800 tracking-tight leading-snug">
-    Discover the Benefits of Our Trusted Energy Partners
-  </h2>
+ <section className="bg-[#032D4D] text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-24 transition-colors duration-500">
+  <strong><h1 className={` text-white text-4xl md:text-5xl`}>
+    Discover the Benefits of Our Trusted Energy Partners </h1></strong><br/>
+
 
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
     {partners.map((partner, index) => (
       <div
         key={index}
-        className="bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-2xl hover:border-yellow-400 hover:-translate-y-1 hover:scale-[1.02] transition-transform duration-300 ease-in-out p-5 sm:p-6 flex flex-col items-start group"
+        className="bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-2xl hover:border-[#032D4D] hover:-translate-y-1 hover:scale-[1.02] transition-transform duration-300 ease-in-out p-5 sm:p-6 flex flex-col items-start group"
       >
         {/* Partner Logo and Name */}
         <div className="flex items-center gap-3 mb-4 w-full">
@@ -559,8 +687,68 @@ const handleBack = () => {
         </button>
 
       </div>
+
     ))}
   </div>
+
+</section>
+
+
+<section className="w-full bg-gray-50 mt-24 py-12 px-4 sm:px-8 lg:px-16 xl:px-24 overflow-hidden">
+  <div className="max-w-7xl mx-auto text-center space-y-6">
+    <h2 className="text-3xl font-extrabold text-black-800">Our Range of Providers</h2>
+    <p className="text-gray-600 text-base max-w-xl mx-auto">
+      We have great relationships with a wide range of Australia’s leading providers, from Energy to
+      Car Insurance and from Health Insurance to Internet. Check out our full range of providers.
+    </p>
+
+    {/* Marquee Style Scroll */}
+    <div className="relative overflow-hidden">
+      <div className="animate-marquee flex gap-10 py-6 w-max">
+        {[
+          { name: "Agl", logo: "/agl.jpg" },
+          { name: "Origin", logo: "/origin.png" },
+          { name: "Red Energy", logo: "/red energy.png" },
+          { name: "Lumo", logo: "/lumo.png" },
+          { name: "HCF", logo: "/origin.png" },
+          { name: "Latrobe Health", logo: "/red energy.png" },
+        ]
+          // Duplicate array to create infinite scroll illusion
+          .concat([
+            { name: "Agl", logo: "/agl.jpg" },
+            { name: "Origin", logo: "/origin.png" },
+            { name: "Red Energy", logo: "/red energy.png" },
+            { name: "Lumo", logo: "/lumo.png" },
+            { name: "HCF", logo: "/origin.png" },
+            { name: "Latrobe Health", logo: "/red energy.png" },
+          ])
+          .map(({ name, logo }, idx) => (
+            <div key={idx} className="flex flex-col items-center min-w-[160px]">
+              <div className="bg-white p-4 rounded-xl shadow-md">
+                <img src={logo} alt={name} className="h-16 w-auto object-contain" />
+              </div>
+              <p className="mt-2 text-sm font-medium text-gray-800 text-center">{name}</p>
+            </div>
+          ))}
+      </div>
+    </div>
+  </div>
+
+  {/* CSS for marquee animation */}
+  <style jsx>{`
+    @keyframes marquee {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+    }
+  `}</style>
 </section>
 
     </>
