@@ -17,7 +17,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
-           <strong><h1 className={` text-White text-4xl md:text-5xl`}>
+           <strong><h1 className={`text-White-70 text-4xl md:text-5xl`}>
            
             Contact Us
           </h1></strong><br/>
