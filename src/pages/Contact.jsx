@@ -31,7 +31,7 @@ export default function Contact() {
             <h2 className="text-3xl font-semibold text-sky-700 drop-shadow-sm text-center">Utility Saver</h2>
             <br />
             <p className="text-black text-lg">
-              <strong className="text-gray-900">ACN:</strong>
+              <strong className="text-gray-900">ACN: 688072639</strong>
             </p>
             <p className="text-black text-lg">
               <strong className="text-gray-900">Email:</strong>{" "}
@@ -57,7 +57,7 @@ export default function Contact() {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <Phone className="text-green-600" size={26} />
-                <p className="text-black font-semibold text-lg">Call Us:</p>
+                <p className="text-black font-semibold text-lg">Call Us: 0415 644 653</p>
               </div>
               <div className="flex items-start gap-4">
                 <Mic className="text-yellow-600 mt-1" size={26} />
