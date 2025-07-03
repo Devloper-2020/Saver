@@ -17,7 +17,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const email = "";
-  const phone = "0415 644 653";
+  const phone = "AU: 0415 644 653";
   const timings = "Mon - Fri: 9:00 AM - 6:00 PM";
 
   const socialLinks = [
