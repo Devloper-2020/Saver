@@ -17,7 +17,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const email = "";
-  const phone = "";
+  const phone = "0415 644 653";
   const timings = "Mon - Fri: 9:00 AM - 6:00 PM";
 
   const socialLinks = [
@@ -59,7 +59,7 @@ export default function Navbar() {
             <a
               href={`tel:${phone}`}
               className="flex items-center gap-1 hover:text-blue-900 transition"
-            >
+            > 
               <FiPhone className="text-blue-500" />
               {phone}
             </a>
