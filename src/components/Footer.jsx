@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
             <FiPhone className="text-lg" />
-            <span>AU: </span>
+            <span>AU:0415 644 653 </span>
           </div>
           <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
             <FiMapPin className="text-lg" />
