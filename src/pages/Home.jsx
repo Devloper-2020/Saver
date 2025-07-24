@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FiDollarSign, FiCheckCircle, FiRefreshCcw } from "react-icons/fi";
+import { FaBolt, FaFireAlt, FaWifi, FaSolarPanel, FaBatteryFull } from 'react-icons/fa';
 import { FaNewspaper, FaTv, FaBroadcastTower, FaGlobeAsia } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 
 const slides = [
@@ -21,7 +23,7 @@ const slides = [
       "Switch providers stress free with help from our local experts. Enjoy complete transparency, no hidden fees, and a 100% free service designed to save you time and money.",
   },
 ];
-
+ 
 const features = [
   {
     icon: <FiDollarSign className="text-green-600 w-12 h-12" />,
@@ -144,8 +146,30 @@ export default function HomePage() {
 
   </section>
 
- <div className="w-full my-8 px-4 md:px-0 bg-[#032D4D] text-white">
-  {/* SCAM WARNING */}
+<div className="w-full my-8 px-4 md:px-0 bg-[#032D4D] text-white relative overflow-hidden">
+  {/* 🔁 Smooth Infinite Marquee */}
+  {/* 🔁 Smooth Infinite Marquee */}
+  <div className="py-4 relative">
+    <div className="flex gap-12 animate-marquee whitespace-nowrap">
+      {[
+        "Electricity", "Gas", "Broadband", "Water", "Solar Battery", "Home Energy Plans", "Business Solutions",
+        "Electricity", "Gas", "Broadband", "Water", "Solar Battery", "Home Energy Plans", "Business Solutions", // duplicate
+      ].map((item, index) => (
+        <span
+          key={index}
+          className="px-6 py-2 bg-white text-[#032D4D] text-base md:text-xl font-bold uppercase rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  </div>
+
+
+
+
+
+  {/* 👇 SCAM WARNING */}
   <div className="py-8">
     <h1 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wider text-center">
       Beware of Scams
@@ -154,49 +178,23 @@ export default function HomePage() {
       Scam callers are falsely claiming to be from Utility Saver, asking customers to download unknown software or share banking information.
       <span className="text-green-400 font-semibold"> Utility Saver will never ask you to do this.</span>
       If you receive such a call, please report it immediately by calling us at{" "}
-      <a href="tel:0800123456" className="text-green-300 font-semibold underline"></a>.
+      <a href="tel:0800123456" className="text-green-300 font-semibold underline">0800 123 456</a>.
     </p>
   </div>
 
-
+  {/* 👇 Free Comparison Heading */}
   <div className="text-center">
     <h2 className="text-3xl font-bold text-white">
       Get Your Free Comparison
     </h2>
   </div>
-<br/>
-  <motion.div className="w-full flex justify-center px-4">
-    <form
-      className="w-full max-w-3xl space-y-8"
-      onSubmit={(e) => e.preventDefault()}
-    >
-      {/* Compare Options */}
-      <div>
-        <label
-          htmlFor="compareOption"
-          className="block mb-3 font-semibold text-base"
-        >
-          What would you like to compare?
-        </label>
-        <div className="flex flex-wrap gap-4" id="compareOption">
-          {["Electricity", "Gas", "Electricity & Gas"].map((option) => (
-            <label
-              key={option}
-              className="flex items-center gap-2 px-5 py-2 rounded-full bg-[#E6EDF3] border border-[#B3C3D2] cursor-pointer hover:bg-[#D4E0EB] transition text-[#032D4D] font-medium"
-            >
-              <input
-                type="radio"
-                name="compareOption"
-                value={option}
-                className="accent-[#032D4D]"
-                required
-              />
-              {option}
-            </label>
-          ))}
-        </div>
-      </div>
 
+  <br />
+
+  {/* 👇 Form Section */}
+  <motion.div className="w-full flex justify-center px-4">
+    <form className="w-full max-w-3xl space-y-8" onSubmit={(e) => e.preventDefault()}>
+      
       {/* Input Fields */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {[{ name: "name", placeholder: "Full Name", type: "text" },
@@ -225,7 +223,7 @@ export default function HomePage() {
         />
         By ticking this box, I provide my express consent for a Utility Saver
         representative to contact me to review my electricity and gas bills
-        and negotiate a supply and sale contract .
+        and negotiate a supply and sale contract.
       </label>
 
       {/* Submit Button */}
@@ -238,18 +236,120 @@ export default function HomePage() {
     </form>
   </motion.div>
 
-
-<br/>
-
-
+  <br />
 </div>
+<section className="bg-gradient-to-b from-white via-blue-50 to-white py-20 px-6 md:px-24">
+  <div className="text-center mb-16">
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-snug">
+      Plan a Switch or New Connection<br />
+      with <span className="text-blue-900 font-bold">Utility Saver</span>
+    </h2>
+  </div>
+
+  {/* Unique State Cards with Descriptions */}
+  <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+    {[
+      {
+        name: "Victoria",
+        color: "bg-blue-100 text-blue-800 hover:bg-blue-200",
+        border: "border-blue-300",
+        iconColor: "text-blue-700",
+        description: "From Melbourne to Geelong, get seamless utility setups across VIC.",
+      },
+      {
+        name: "New South Wales",
+        color: "bg-green-100 text-green-800 hover:bg-green-200",
+        border: "border-green-300",
+        iconColor: "text-green-700",
+        description: "Serving Sydney and beyond fast and easy connections in NSW.",
+      },
+      {
+        name: "South Australia",
+        color: "bg-indigo-100 text-indigo-800 hover:bg-indigo-200",
+        border: "border-indigo-300",
+        iconColor: "text-indigo-700",
+        description: "From Adelaide to remote regions, we’ve got SA covered.",
+      },
+      {
+        name: "Queensland",
+        color: "bg-emerald-100 text-emerald-800 hover:bg-emerald-200",
+        border: "border-emerald-300",
+        iconColor: "text-emerald-700",
+        description: "From Brisbane to the coast reliable service across QLD.",
+      },
+    ].map((state, index) => (
+      <div
+        key={index}
+        className={`rounded-2xl p-6 shadow-md border transition-all duration-300 ${state.color} ${state.border} hover:shadow-lg cursor-pointer`}
+      >
+        <div className="flex items-center gap-3 mb-3">
+          <FaMapMarkerAlt className={`text-xl ${state.iconColor}`} />
+          <h3 className="text-lg font-semibold">{state.name}</h3>
+        </div>
+        <p className="text-sm text-gray-700">{state.description}</p>
+      </div>
+    ))}
+  </div>
+
+  
+    <h3 className="text-2xl text-center mb-16 md:text-3xl font-semibold text-gray-800 mb-4">
+      We also help connect your premises to other essential services:
+    </h3>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
+      {[
+        {
+          name: "Electricity",
+          icon: <FaBolt className="text-blue-600 text-xl" />,
+          desc: "Power up instantly",
+          bg: "bg-blue-100",
+        },
+        {
+          name: "Gas",
+          icon: <FaFireAlt className="text-green-700 text-xl" />,
+          desc: "Heating made simple",
+          bg: "bg-green-100",
+        },
+        {
+          name: "Broadband",
+          icon: <FaWifi className="text-blue-700 text-xl" />,
+          desc: "Stay connected",
+          bg: "bg-blue-200",
+        },
+        {
+          name: "Solar",
+          icon: <FaSolarPanel className="text-green-800 text-xl" />,
+          desc: "Go green, save more",
+          bg: "bg-green-200",
+        },
+        {
+          name: "Battery",
+          icon: <FaBatteryFull className="text-blue-900 text-xl" />,
+          desc: "Store your energy",
+          bg: "bg-blue-300",
+        },
+      ].map((service, index) => (
+        <div
+          key={index}
+          className="flex flex-col items-center bg-white border border-gray-100 shadow-sm hover:shadow-md px-5 py-6 rounded-xl transition-all duration-300 hover:-translate-y-1"
+        >
+          <div className={`rounded-full p-3 mb-3 ${service.bg}`}>
+            {service.icon}
+          </div>
+          <span className="text-gray-800 font-semibold text-sm">{service.name}</span>
+          <span className="text-gray-500 text-xs mt-1">{service.desc}</span>
+        </div>
+      ))}
+
+  </div>
+</section>
 
 {/* Benefits Section */}
-<section className="max-w-7xl mx-auto mt-24 px-6 sm:px-12 lg:px-24">
-  <h2 className="text-4xl font-extrabold text-Black text-center">
+<section className="w-full my-8 px-4 mx-auto py-20 lg:py-28 bg-[#032D4D] text-white relative overflow-hidden rounded-t-[2.5rem] sm:px-12 lg:px-24">
+
+  <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center drop-shadow-md mb-16">
     Benefits You Can Enjoy
   </h2>
-<br/>
+
   <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
     {features.map(({ icon, title, description }, idx) => (
       <motion.div
@@ -258,80 +358,101 @@ export default function HomePage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: idx * 0.2 }}
         tabIndex={0}
-        className="bg-[#E6EDF3] border border-[#C5D3E0] rounded-3xl p-8 shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#A5C4DB]"
+        className="bg-[#E6EDF3] border border-[#C5D3E0] rounded-3xl p-8 min-h-[360px] flex flex-col justify-between shadow-md transition-transform transform hover:-translate-y-2 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#A5C4DB]"
         aria-label={title}
       >
-        <div className="mb-5 text-[#032D4D] text-5xl">{icon}</div>
-
-        <h3 className="text-2xl font-bold text-[#032D4D] mb-3 leading-snug tracking-wide">
-          {title}
-        </h3>
-
-        <p className="text-gray-700 text-base leading-relaxed">
-          {description}
-        </p>
+        <div className="space-y-5">
+          <div className="text-[#032D4D] text-5xl">{icon}</div>
+          <h3 className="text-2xl font-bold text-[#032D4D] leading-snug tracking-wide">
+            {title}
+          </h3>
+          <p className="text-gray-700 text-base leading-relaxed">
+            {description}
+          </p>
+        </div>
       </motion.div>
     ))}
   </div>
 </section>
 
 
+<section className="w-full bg-gradient-to-b from-white via-blue-50 to-white py-24 px-4 sm:px-8 lg:px-16 xl:px-24">
+  <div className="max-w-7xl mx-auto space-y-20">
+    {/* Heading */}
+    <div className="text-center max-w-3xl mx-auto space-y-5">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-[#032D4D] drop-shadow-lg tracking-tight">
+        What Our Customers Say
+      </h2>
+      <p className="text-gray-600 text-lg md:text-xl leading-relaxed font-medium">
+        Trusted by thousands across Australia — from energy to broadband. Hear from real users who made the smart switch.
+      </p>
+    </div>
 
-{/* What Our Customers Say Section */}
-<section className="w-full bg-white mt-32 px-4 sm:px-8 lg:px-16 xl:px-24">
-  <div className="max-w-7xl mx-auto space-y-12">
-    {/* Heading & Description */}<br/> 
-   <div className="space-y-4 max-w-3xl mx-auto text-center">
-  <br/><h2 className="text-4xl font-extrabold text-Black">
-    What Our Customers Say
-  </h2>
-  <p className="text-gray-700 text-lg leading-relaxed text-justify">
-    We've helped thousands of Australians make smarter decisions with
-    their money. Whether it's choosing the best energy plan, internet
-    provider, or health insurance, our customers love how simple and
-    effective our service is. Take a look at their stories below.
-  </p>
-</div>
-
-    {/* Scroll container only 
-     no buttons */}
+    {/* Auto-scrolling Testimonials */}
     <div
-      className="overflow-x-auto pb-4 modern-scrollbar scroll-smooth scrollbar-thin scrollbar-thumb-black scrollbar-track-gray-200"
+      className="overflow-x-auto no-scrollbar scroll-smooth"
       tabIndex={0}
+      ref={(el) => {
+        if (!el) return;
+        const scrollContainer = el;
+        let interval;
+
+        const startScroll = () => {
+          interval = setInterval(() => {
+            if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+              scrollContainer.scrollLeft = 0;
+            } else {
+              scrollContainer.scrollLeft += 1;
+            }
+          }, 30);
+        };
+
+        const stopScroll = () => clearInterval(interval);
+
+        scrollContainer.addEventListener("mouseenter", stopScroll);
+        scrollContainer.addEventListener("mouseleave", startScroll);
+
+        startScroll();
+      }}
     >
-      <div className="flex gap-6 min-w-full">
-        {[
+      <div className="flex gap-8 min-w-full px-2 w-max">
+        {[...Array(2)].flatMap(() => [
           {
             name: "Marsh",
-            title: "Got the best health plan in minutes!",
-            image: "/marsh.jpg",
+            title: "Got the best health plan in minutes. Absolutely seamless!",
           },
           {
             name: "Nicole",
-            title: "Easy to compare, easier to save!",
-            image: "/nicole.jpg",
+            title: "Easy to compare, even easier to save. Love the experience!",
           },
           {
             name: "Jason",
-            title: "Switched energy plans and saved big.",
-            image: "/jason.jpg",
+            title: "Switched energy plans and saved hundreds. Highly recommended!",
           },
           {
             name: "Sophie",
-            title: "Quick, clear, and totally stress-free.",
-            image: "/sophie.jpg",
+            title: "Quick, clear, and totally stress-free. A++ service!",
           },
-        ].map(({ name, title, image }) => (
+        ]).map(({ name, title }, index) => (
           <div
-            key={name}
-            className="flex-shrink-0 rounded-2xl shadow-lg overflow-hidden relative min-w-[280px] sm:min-w-[320px] md:min-w-[360px] lg:min-w-[400px] h-[400px] bg-cover bg-center text-white"
-            style={{
-              backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1)), url(${image})`,
-            }}
+            key={index}
+            className="flex-shrink-0 bg-white bg-opacity-60 backdrop-blur-md border border-blue-100 shadow-lg rounded-3xl p-6 sm:p-8 min-w-[280px] sm:min-w-[320px] md:min-w-[360px] hover:scale-[1.035] hover:shadow-blue-200 transition-all duration-300 ease-in-out"
           >
-            <div className="absolute bottom-0 p-6">
-              <h3 className="text-xl font-bold">{name}</h3>
-              <p className="text-sm italic">"{title}"</p>
+            <div className="flex flex-col h-full justify-between space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 text-[#032D4D] font-bold flex items-center justify-center text-xl shadow-inner">
+                  {name[0]}
+                </div>
+                <h3 className="text-lg font-semibold text-[#032D4D]">
+                  {name}
+                </h3>
+              </div>
+              <p className="text-gray-800 text-base leading-relaxed italic">
+                “{title}”
+              </p>
+              <div className="text-right text-yellow-500 text-sm">
+                ★★★★★
+              </div>
             </div>
           </div>
         ))}
@@ -339,37 +460,21 @@ export default function HomePage() {
     </div>
   </div>
 
-  {/* Modern Scrollbar Styles */}
+  {/* Hide scrollbar completely */}
   <style jsx>{`
-    .modern-scrollbar::-webkit-scrollbar {
-      height: 10px;
+    .no-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
-
-    .modern-scrollbar::-webkit-scrollbar-track {
-      background: #e5e7eb; /* Tailwind gray-200 */
-      border-radius: 12px;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .modern-scrollbar::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, #34d399, #059669);
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.5);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .modern-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(135deg, #059669, #065f46);
-      box-shadow: 0 3px 8px rgba(5, 95, 70, 0.8);
-    }
-
-    /* Firefox */
-    .modern-scrollbar {
-      scrollbar-width: thin;
-      scrollbar-color: #34d399 #e5e7eb;
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
     }
   `}</style>
 </section>
+
+
+
+
 <section className="w-full bg-[#032D4D] text-white py-20 px-4 sm:px-8 lg:px-16 xl:px-24 mt-24 rounded-t-[2.5rem]">
   <div className="max-w-4xl mx-auto flex flex-col items-center space-y-10">
 
@@ -451,8 +556,7 @@ export default function HomePage() {
           { name: "Origin", logo: "/origin.png" },
           { name: "Red Energy", logo: "/red energy.png" },
           { name: "Lumo", logo: "/lumo.png" },
-          { name: "HCF", logo: "/origin.png" },
-          { name: "Latrobe Health", logo: "/red energy.png" },
+    
         ]
           // Duplicate array to create infinite scroll illusion
           .concat([
@@ -460,8 +564,7 @@ export default function HomePage() {
             { name: "Origin", logo: "/origin.png" },
             { name: "Red Energy", logo: "/red energy.png" },
             { name: "Lumo", logo: "/lumo.png" },
-            { name: "HCF", logo: "/origin.png" },
-            { name: "Latrobe Health", logo: "/red energy.png" },
+          
           ])
           .map(({ name, logo }, idx) => (
             <div key={idx} className="flex flex-col items-center min-w-[160px]">
@@ -491,14 +594,6 @@ export default function HomePage() {
     }
   `}</style>
 </section>
-
-
-
-
-
-
-
-
 
 
     </div>
