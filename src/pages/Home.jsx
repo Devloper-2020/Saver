@@ -246,98 +246,111 @@ export default function HomePage() {
     </h2>
   </div>
 
-  {/* Unique State Cards with Descriptions */}
-  <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-    {[
-      {
-        name: "Victoria",
-        color: "bg-blue-100 text-blue-800 hover:bg-blue-200",
-        border: "border-blue-300",
-        iconColor: "text-blue-700",
-        description: "From Melbourne to Geelong, get seamless utility setups across VIC.",
-      },
-      {
-        name: "New South Wales",
-        color: "bg-green-100 text-green-800 hover:bg-green-200",
-        border: "border-green-300",
-        iconColor: "text-green-700",
-        description: "Serving Sydney and beyond fast and easy connections in NSW.",
-      },
-      {
-        name: "South Australia",
-        color: "bg-indigo-100 text-indigo-800 hover:bg-indigo-200",
-        border: "border-indigo-300",
-        iconColor: "text-indigo-700",
-        description: "From Adelaide to remote regions, we’ve got SA covered.",
-      },
-      {
-        name: "Queensland",
-        color: "bg-emerald-100 text-emerald-800 hover:bg-emerald-200",
-        border: "border-emerald-300",
-        iconColor: "text-emerald-700",
-        description: "From Brisbane to the coast reliable service across QLD.",
-      },
-    ].map((state, index) => (
-      <div
-        key={index}
-        className={`rounded-2xl p-6 shadow-md border transition-all duration-300 ${state.color} ${state.border} hover:shadow-lg cursor-pointer`}
-      >
-        <div className="flex items-center gap-3 mb-3">
-          <FaMapMarkerAlt className={`text-xl ${state.iconColor}`} />
-          <h3 className="text-lg font-semibold">{state.name}</h3>
+  {/* Premium State Cards with Descriptions */}
+<div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24 px-4">
+  {[
+    {
+      name: "Victoria",
+      bg: "from-blue-100 to-blue-200",
+      textColor: "text-blue-800",
+      iconColor: "text-blue-600",
+      description: "From Melbourne to Geelong, get seamless utility setups across VIC.",
+    },
+    {
+      name: "New South Wales",
+      bg: "from-green-100 to-green-200",
+      textColor: "text-green-800",
+      iconColor: "text-green-600",
+      description: "Serving Sydney and beyond with fast and easy connections in NSW.",
+    },
+    {
+      name: "South Australia",
+      bg: "from-indigo-100 to-indigo-200",
+      textColor: "text-indigo-800",
+      iconColor: "text-indigo-600",
+      description: "From Adelaide to remote regions, we’ve got SA covered with ease.",
+    },
+    {
+      name: "Queensland",
+      bg: "from-emerald-100 to-emerald-200",
+      textColor: "text-emerald-800",
+      iconColor: "text-emerald-600",
+      description: "From Brisbane to the coast, reliable service across QLD.",
+    },
+  ].map((state, index) => (
+    <div
+      key={index}
+      className={`rounded-3xl p-6 bg-gradient-to-br ${state.bg} shadow-md hover:shadow-2xl border border-gray-200 hover:scale-[1.03] transition-all duration-300 cursor-pointer`}
+    >
+      <div className="flex items-center gap-3 mb-4">
+        <div className={`p-3 bg-white rounded-full shadow ${state.iconColor}`}>
+          <FaMapMarkerAlt className={`text-2xl ${state.iconColor}`} />
         </div>
-        <p className="text-sm text-gray-700">{state.description}</p>
+        <h3 className={`text-xl font-bold ${state.textColor}`}>{state.name}</h3>
       </div>
-    ))}
-  </div>
+      <p className="text-gray-700 text-base leading-relaxed">{state.description}</p>
+    </div>
+  ))}
+</div>
+
 
   
-    <h3 className="text-2xl text-center mb-16 md:text-3xl font-semibold text-gray-800 mb-4">
-      We also help connect your premises to other essential services:
-    </h3>
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
-      {[
-        {
-          name: "Electricity",
-          icon: <FaBolt className="text-blue-600 text-xl" />,
-          desc: "Power up instantly",
-          bg: "bg-blue-100",
-        },
-        {
-          name: "Gas",
-          icon: <FaFireAlt className="text-green-700 text-xl" />,
-          desc: "Heating made simple",
-          bg: "bg-green-100",
-        },
-        {
-          name: "Broadband",
-          icon: <FaWifi className="text-blue-700 text-xl" />,
-          desc: "Stay connected",
-          bg: "bg-blue-200",
-        },
-        {
-          name: "Solar",
-          icon: <FaSolarPanel className="text-green-800 text-xl" />,
-          desc: "Go green, save more",
-          bg: "bg-green-200",
-        },
-        {
-          name: "Battery",
-          icon: <FaBatteryFull className="text-blue-900 text-xl" />,
-          desc: "Store your energy",
-          bg: "bg-blue-300",
-        },
-      ].map((service, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-center bg-white border border-gray-100 shadow-sm hover:shadow-md px-5 py-6 rounded-xl transition-all duration-300 hover:-translate-y-1"
-        >
-          <div className={`rounded-full p-3 mb-3 ${service.bg}`}>
-            {service.icon}
-          </div>
-          <span className="text-gray-800 font-semibold text-sm">{service.name}</span>
-          <span className="text-gray-500 text-xs mt-1">{service.desc}</span>
-        </div>
+   <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16">
+  We also help connect your premises to other essential services:
+</h3>
+<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-6xl mx-auto">
+  {[
+    {
+      name: "Electricity",
+      icon: <FaBolt className="text-white text-3xl" />,
+      desc: "Power up instantly",
+      bg: "bg-gradient-to-br from-blue-500 to-blue-700",
+      border: "border-blue-300 hover:border-blue-500",
+    },
+    {
+      name: "Gas",
+      icon: <FaFireAlt className="text-white text-3xl" />,
+      desc: "Heating made simple",
+      bg: "bg-gradient-to-br from-green-500 to-green-700",
+      border: "border-green-300 hover:border-green-500",
+    },
+    {
+      name: "Broadband",
+      icon: <FaWifi className="text-white text-3xl" />,
+      desc: "Stay connected",
+      bg: "bg-gradient-to-br from-indigo-500 to-indigo-700",
+      border: "border-indigo-300 hover:border-indigo-500",
+    },
+    {
+      name: "Solar",
+      icon: <FaSolarPanel className="text-white text-3xl" />,
+      desc: "Go green, save more",
+      bg: "bg-gradient-to-br from-yellow-400 to-green-600",
+      border: "border-yellow-300 hover:border-yellow-500",
+    },
+    {
+      name: "Battery",
+      icon: <FaBatteryFull className="text-white text-3xl" />,
+      desc: "Store your energy",
+      bg: "bg-gradient-to-br from-blue-600 to-blue-900",
+      border: "border-blue-400 hover:border-blue-600",
+    },
+  ].map((service, index) => (
+    <div
+      key={index}
+      className={`flex flex-col items-center text-center bg-white shadow-lg hover:shadow-2xl px-6 py-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 group border ${service.border}`}
+    >
+      <div
+        className={`rounded-full p-5 shadow-md ${service.bg} transition-transform duration-300 group-hover:scale-110`}
+      >
+        {service.icon}
+      </div>
+      <span className="text-gray-800 font-bold text-lg mt-4">{service.name}</span>
+      <span className="text-gray-500 text-sm mt-1">{service.desc}</span>
+    </div>
+ 
+
+
       ))}
 
   </div>
@@ -594,6 +607,7 @@ export default function HomePage() {
     }
   `}</style>
 </section>
+
 
 
     </div>
