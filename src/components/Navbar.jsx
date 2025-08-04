@@ -23,22 +23,22 @@ export default function Navbar() {
   const socialLinks = [
     {
       icon: <FiFacebook />,
-      href: "https://facebook.com/energysaver",
+      href: "https://facebook.com/",
       label: "Facebook",
     },
     {
       icon: <FiTwitter />,
-      href: "https://twitter.com/energysaver",
+      href: "https://twitter.com/",
       label: "Twitter",
     },
     {
       icon: <FiInstagram />,
-      href: "https://instagram.com/energysaver",
+      href: "https://instagram.com/",
       label: "Instagram",
     },
     {
       icon: <FiLinkedin />,
-      href: "https://linkedin.com/company/energysaver",
+      href: "https://linkedin.com/company/",
       label: "LinkedIn",
     },
   ];
