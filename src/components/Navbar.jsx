@@ -46,7 +46,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50">
       {/* Top Info Bar */}
-      <div className="bg-blue-50 border-b border-blue-200 text-blue-700 text-xs sm:text-sm px-3 sm:px-4 py-1">
+      <div className="bg-blue-50 border-b border-blue-200 text-blue-700 text-xs sm:text-sm px-3 sm:px-4 py-3">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm">
             <a
@@ -154,7 +154,7 @@ export default function Navbar() {
                 Compare & Save
               </a>
             </li>
-           
+         
             <li className="relative group cursor-pointer">
               <a href="/contact" className="hover:text-blue-600 transition">
                 Contact Us
