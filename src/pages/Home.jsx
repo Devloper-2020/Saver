@@ -126,11 +126,11 @@ export default function HomePage() {
   <div className="max-w-2xl">
     <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-left">
       Empowering Australians to{" "}
-      <span className="text-green-600">Save Time & Money with the Right Plans</span>
+      <span className="text-green-600">Save Time & Money with the Better Deal </span>
     </h1>
     <p className="mt-6 text-lg text-Black font-medium text-left">
-  For over <span className="underline decoration-white-700">25 years</span>, we've been helping Aussies make informed decisions. 
-  Find the best deals quickly and easily join over 500,000 people who’ve already made the switch.Our mission is to save your time, money by comparing top providers . 
+  For over <span className="underline decoration-white-700">several years</span>, we've been helping Aussies make informed decisions. 
+  Find the better deals quickly and easily join over 500,000 people who’ve already made the switch.Our mission is to save your time, money by finding better offer from several retailer for free . 
    
 </p>
 
@@ -139,21 +139,19 @@ export default function HomePage() {
 
     </div><br/>
      {/* Caption */}
-  <div className="w-full text-center min-h-[120px]" aria-live="polite">
-    <h3 className="text-xl md:text-2xl font-bold text-Black">Why Australians Choose Us</h3>
-    <p className="mt-2 text-gray-600">{slides[current].caption}</p>
-  </div>
-
-  </section>
-
-<div className="w-full my-8 px-4 md:px-0 bg-[#032D4D] text-white relative overflow-hidden">
+ <section className="w-full text-center min-h-[120px]" aria-live="polite">
+  <h3 className="text-xl md:text-2xl font-bold text-black">Why Australians Choose Us</h3>
+  <p className="mt-2 text-gray-600">{slides[current].caption}</p>
+</section>
+{/* ✅ FULL WIDTH + TOUCH LEFT & RIGHT */}
+<div className="w-full my-8 px-4 md:px-0 bg-[#032D4D]  text-white relative overflow-hidden ">
   {/* 🔁 Smooth Infinite Marquee */}
   {/* 🔁 Smooth Infinite Marquee */}
   <div className="py-4 relative">
     <div className="flex gap-12 animate-marquee whitespace-nowrap">
       {[
         "Electricity", "Gas", "Broadband", "Water", "Solar Battery", "Home Energy Plans", "Business Solutions",
-        "Electricity", "Gas", "Broadband", "Water", "Solar Battery", "Home Energy Plans", "Business Solutions", // duplicate
+        "Electricity", "Gas", "Broadband", "Water", "Solar Battery", "Home Energy Plans", "Business Solutions",
       ].map((item, index) => (
         <span
           key={index}
@@ -165,79 +163,95 @@ export default function HomePage() {
     </div>
   </div>
 
+  {/* ⚠️ Scam + Form Section */}
+  <div className="w-full">
 
-
-
-
-  {/* 👇 SCAM WARNING */}
-  <div className="py-8">
-    <h1 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wider text-center">
-      Beware of Scams
-    </h1>
-    <p className="mt-4 text-center text-base md:text-lg leading-relaxed">
-      Scam callers are falsely claiming to be from Utility Saver, asking customers to download unknown software or share banking information.
-      <span className="text-green-400 font-semibold"> Utility Saver will never ask you to do this.</span>
-      If you receive such a call, please report it immediately by calling us at{" "}
-      <a href="tel:0800123456" className="text-green-300 font-semibold underline">0800 123 456</a>.
-    </p>
-  </div>
-
-  {/* 👇 Free Comparison Heading */}
-  <div className="text-center">
-    <h2 className="text-3xl font-bold text-white">
-      Get Your Free Comparison
-    </h2>
-  </div>
-
-  <br />
-
-  {/* 👇 Form Section */}
-  <motion.div className="w-full flex justify-center px-4">
-    <form className="w-full max-w-3xl space-y-8" onSubmit={(e) => e.preventDefault()}>
+    {/* 🚨 Warning Section */}
+    <div className="py-10 px-4 sm:px-8 lg:px-16">
+      <h1 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wider text-center">
+        Beware of Scams
+      </h1>
+      <p className="mt-4 text-center text-base md:text-lg leading-relaxed text-white max-w-5xl mx-auto">
+        Scam callers are falsely claiming to be from Utility Saver, asking customers to download unknown software or share banking information.
+        <span className="text-green-400 font-semibold"> Utility Saver will never ask you to do this.</span>
+        If you receive such a call, please report it immediately by calling us at{" "}
+        <a href="tel:0800123456" className="text-green-300 font-semibold underline">0800 123 456</a>.
+      </p>
+   
       
-      {/* Input Fields */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {[{ name: "name", placeholder: "Full Name", type: "text" },
-          { name: "phone", placeholder: "Phone Number", type: "tel" },
-          { name: "email", placeholder: "Email Address", type: "email" },
-          { name: "postcode", placeholder: "Postcode", type: "text" },
-        ].map(({ name, placeholder, type }) => (
-          <input
-            key={name}
-            id={name}
-            name={name}
-            type={type}
-            required
-            placeholder={placeholder}
-            className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
-          />
-        ))}
+
+    </div>
+   <h2 className="text-3xl font-bold mb-6 text-white text-center">
+  Get Your Free Comparison
+</h2>
+    {/* 📝 Form + Text Side-by-Side */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12 px-4 sm:px-8 lg:px-16">
+
+      {/* 🧾 Form */}
+      <div>
+   
+
+        <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              { name: "name", placeholder: "Full Name", type: "text" },
+              { name: "phone", placeholder: "Phone Number", type: "tel" },
+              { name: "email", placeholder: "Email Address", type: "email" },
+              { name: "postcode", placeholder: "Postcode", type: "text" },
+            ].map(({ name, placeholder, type }) => (
+              <input
+                key={name}
+                id={name}
+                name={name}
+                type={type}
+                required
+                placeholder={placeholder}
+                className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
+              />
+            ))}
+          </div>
+
+          <label className="flex items-start gap-3 text-sm leading-snug">
+            <input
+              type="checkbox"
+              required
+              className="mt-1 w-5 h-5 border-[#B3C3D2] rounded focus:ring-2 focus:ring-[#032D4D]"
+            />
+            By ticking this box, I provide my express consent for a Utility Saver representative to contact me to review my electricity and gas bills and negotiate a supply and sale contract.
+          </label>
+
+          <button
+            type="submit"
+            className="bg-sky-600 hover:bg-sky-700 text-white w-full py-4 rounded-md transition font-semibold text-lg shadow-sm"
+          >
+            Register Now
+          </button>
+        </form>
       </div>
 
-      {/* Consent Checkbox */}
-      <label className="flex items-start gap-3 text-sm leading-snug">
-        <input
-          type="checkbox"
-          required
-          className="mt-1 w-5 h-5 border-[#B3C3D2] rounded focus:ring-2 focus:ring-[#032D4D]"
-        />
-        By ticking this box, I provide my express consent for a Utility Saver
-        representative to contact me to review my electricity and gas bills
-        and negotiate a supply and sale contract.
-      </label>
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        className="bg-sky-600 hover:bg-sky-700 text-white w-full py-4 rounded-md transition font-semibold text-lg shadow-sm"
-      >
-        Register Now
-      </button>
-    </form>
-  </motion.div>
-
-  <br />
+      {/* 📢 Text Section */}
+      {/* 📢 Text Section */}
+<div className="text-white text-lg leading-relaxed space-y-4 text-justify">
+  <h3 className="text-3xl md:text-4xl font-semibold mb-4 text-white text-left">
+    When did you last compare your utility providers?
+  </h3>
+  <p>
+    Many people know that switching providers can lead to significant savings, yet most never get around to it.
+  </p>
+  <p>
+    With the cost of living constantly rising, now is the ideal time to see how much you could save by making a switch.
+  </p>
+  <p className=" text-2xl md:text-4xl font-semibold mb-4 text-justify text-green-300">
+    And the best part? It’s completely free!
+  </p>
 </div>
+
+    </div>
+
+  </div>
+</div>
+
+
 <section className="bg-gradient-to-b from-white via-blue-50 to-white py-20 px-6 md:px-24">
   <div className="text-center mb-16">
     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-snug">
@@ -254,28 +268,28 @@ export default function HomePage() {
       bg: "from-blue-100 to-blue-200",
       textColor: "text-blue-800",
       iconColor: "text-blue-600",
-      description: "From Melbourne to Geelong, get seamless utility setups across VIC.",
+  
     },
     {
       name: "New South Wales",
       bg: "from-green-100 to-green-200",
       textColor: "text-green-800",
       iconColor: "text-green-600",
-      description: "Serving Sydney and beyond with fast and easy connections in NSW.",
+    
     },
     {
       name: "South Australia",
       bg: "from-indigo-100 to-indigo-200",
       textColor: "text-indigo-800",
       iconColor: "text-indigo-600",
-      description: "From Adelaide to remote regions, we’ve got SA covered with ease.",
+    
     },
     {
       name: "Queensland",
       bg: "from-emerald-100 to-emerald-200",
       textColor: "text-emerald-800",
       iconColor: "text-emerald-600",
-      description: "From Brisbane to the coast, reliable service across QLD.",
+   
     },
   ].map((state, index) => (
     <div
@@ -565,18 +579,18 @@ export default function HomePage() {
     <div className="relative overflow-hidden">
       <div className="animate-marquee flex gap-10 py-6 w-max">
         {[
-          { name: "Agl", logo: "/agl.jpg" },
-          { name: "Origin", logo: "/origin.png" },
-          { name: "Red Energy", logo: "/red energy.png" },
-          { name: "Lumo", logo: "/lumo.png" },
+          { name: "", logo: "/" },
+          { name: "", logo: "/" },
+          { name: "", logo: "/" },
+          { name: "", logo: "/" },
     
         ]
           // Duplicate array to create infinite scroll illusion
           .concat([
-            { name: "Agl", logo: "/agl.jpg" },
-            { name: "Origin", logo: "/origin.png" },
-            { name: "Red Energy", logo: "/red energy.png" },
-            { name: "Lumo", logo: "/lumo.png" },
+            { name: "", logo: "/" },
+            { name: "", logo: "/" },
+            { name: "", logo: "/" },
+            { name: "", logo: "" },
           
           ])
           .map(({ name, logo }, idx) => (
@@ -606,10 +620,11 @@ export default function HomePage() {
       animation: marquee 30s linear infinite;
     }
   `}</style>
+   </section>
+
+ 
+
 </section>
-
-
-
-    </div>
+</div>
   );
 }
