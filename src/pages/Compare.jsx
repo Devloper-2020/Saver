@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-
+import { Check } from "lucide-react";
 const inputStyle =
   "w-full p-3 pl-10 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-y[#032D4D]-400 text-sm transition-all bg-gray-50";
 
@@ -16,6 +16,75 @@ export default function Compare() {
 const [showError, setShowError] = useState(false);
 const [comparisonType, setComparisonType] = useState("");
 const [customerType, setCustomerType] = useState("");
+const sections = ["Electricity", "Gas", "Broadband", "Solar", "Batteries"];
+ const [activeSection, setActiveSection] = useState(null); 
+  const data = {
+    Electricity: [
+      {
+        company: "PowerCo",
+        price: "$120/month",
+        features: ["Fixed-rate Plan", "Green Energy", "Usage Dashboard"],
+        highlight: true,
+      },
+      {
+        company: "ElectroPro",
+        price: "$115/month",
+        features: ["Smart Meter Support", "Mobile App", "No Hidden Fees"],
+      },
+    ],
+    Gas: [
+      {
+        company: "GasSafe",
+        price: "$85/month",
+        features: ["Auto Refill", "Emergency Support", "Billing Flexibility"],
+      },
+      {
+        company: "HeatFlow",
+        price: "$80/month",
+        features: ["Eco-Friendly", "Quick Setup", "Responsive Support"],
+        highlight: true,
+      },
+    ],
+    Broadband: [
+      {
+        company: "FiberFast",
+        price: "$60/month",
+        features: ["Unlimited Data", "99.9% Uptime", "Free Installation"],
+      },
+      {
+        company: "NetSprint",
+        price: "$55/month",
+        features: ["No Contract", "Fast Upload", "24/7 Support"],
+        highlight: true,
+      },
+    ],
+    Solar: [
+      {
+        company: "SunTech",
+        price: "$3000 (one-time)",
+        features: ["25-Year Warranty", "App Monitoring", "Certified Panels"],
+      },
+      {
+        company: "SolarBoost",
+        price: "$2800 (one-time)",
+        features: ["Battery Included", "Government Subsidy", "On-site Service"],
+        highlight: true,
+      },
+    ],
+    Batteries: [
+      {
+        company: "VoltMax",
+        price: "$2500 (one-time)",
+        features: ["Fast Charging", "Smart System", "10-Year Warranty"],
+      },
+      {
+        company: "BatteryHouse",
+        price: "$2300 (one-time)",
+        features: ["Long Life", "Easy Install", "Live Monitoring"],
+        highlight: true,
+      },
+    ],
+  };
 
 
   const formRef = useRef(null);
@@ -161,12 +230,12 @@ const handleBack = () => {
           <div className="animate-marquee flex gap-8 sm:gap-10 py-4 w-max">
             {[...Array(2)].flatMap(() =>
               [
-                { name: "AGL", logo: "/agl.jpg" },
-                { name: "Origin", logo: "/origin.png" },
-                { name: "Red Energy", logo: "/red energy.png" },
-                { name: "Lumo", logo: "/lumo.png" },
-                { name: "HCF", logo: "/hcf.png" },
-                { name: "Latrobe", logo: "/latrobe.png" },
+                { name: "", logo: "/" },
+                { name: "", logo: "/" },
+                { name: "", logo: "/" },
+                { name: "", logo: "/" },
+                { name: "", logo: "/" },
+                { name: "", logo: "/" },
               ].map(({ name, logo }, idx) => (
                 <div key={idx} className="flex flex-col items-center min-w-[100px]">
                   <div className="bg-white  p-3 rounded-xl shadow-md hover:shadow-lg transition">
@@ -635,121 +704,22 @@ const handleBack = () => {
           </motion.div>
         </div>
       </section>
+
+
+
+
  <section className="bg-[#032D4D] text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-24 transition-colors duration-500">
   <strong><h1 className={` text-white text-4xl md:text-5xl`}>
     Discover the Benefits of Our Trusted Energy Partners </h1></strong><br/>
 
 
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-    {partners.map((partner, index) => (
-      <div
-        key={index}
-        className="bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-2xl hover:border-[#032D4D] hover:-translate-y-1 hover:scale-[1.02] transition-transform duration-300 ease-in-out p-5 sm:p-6 flex flex-col items-start group"
-      >
-        {/* Partner Logo and Name */}
-        <div className="flex items-center gap-3 mb-4 w-full">
-          <img
-            src={partner.logo}
-            alt={`${partner.name} logo`}
-            className="h-10 sm:h-12 object-contain transition-transform duration-300 group-hover:scale-110"
-          />
-          <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 tracking-tight">
-            {partner.name}
-          </h3>
-        </div>
-
-        {/* Benefits List */}
-        <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6 text-sm sm:text-base leading-relaxed">
-          {partner.benefits.map((benefit, idx) => (
-            <li key={idx} className="transition-all duration-200 group-hover:pl-2">
-              {benefit}
-            </li>
-          ))}
-        </ul>
-
-        {/* CTA Button */}
-        <button
-          onClick={() =>
-            document.getElementById("compare-form")?.scrollIntoView({ behavior: "smooth" })
-          }
-          className="mt-auto inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold text-sm px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow hover:bg-blue-700 transition-all duration-300 group-hover:shadow-md"
-        >
-          Compare Plans
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-200 group-hover:translate-x-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
-      </div>
-
-    ))}
+   
+   
   </div>
 
 </section>
 
-
-<section className="w-full bg-gray-50 mt-24 py-12 px-4 sm:px-8 lg:px-16 xl:px-24 overflow-hidden">
-  <div className="max-w-7xl mx-auto text-center space-y-6">
-    <h2 className="text-3xl font-extrabold text-black-800">Our Range of Providers</h2>
-    <p className="text-gray-600 text-base max-w-xl mx-auto">
-      We have great relationships with a wide range of Australia’s leading providers, from Energy to
-      Car Insurance and from Health Insurance to Internet. Check out our full range of providers.
-    </p>
-
-    {/* Marquee Style Scroll */}
-    <div className="relative overflow-hidden">
-      <div className="animate-marquee flex gap-10 py-6 w-max">
-        {[
-          { name: "Agl", logo: "/agl.jpg" },
-          { name: "Origin", logo: "/origin.png" },
-          { name: "Red Energy", logo: "/red energy.png" },
-          { name: "Lumo", logo: "/lumo.png" },
-          { name: "HCF", logo: "/origin.png" },
-          { name: "Latrobe Health", logo: "/red energy.png" },
-        ]
-          // Duplicate array to create infinite scroll illusion
-          .concat([
-            { name: "Agl", logo: "/agl.jpg" },
-            { name: "Origin", logo: "/origin.png" },
-            { name: "Red Energy", logo: "/red energy.png" },
-            { name: "Lumo", logo: "/lumo.png" },
-            { name: "HCF", logo: "/origin.png" },
-            { name: "Latrobe Health", logo: "/red energy.png" },
-          ])
-          .map(({ name, logo }, idx) => (
-            <div key={idx} className="flex flex-col items-center min-w-[160px]">
-              <div className="bg-white p-4 rounded-xl shadow-md">
-                <img src={logo} alt={name} className="h-16 w-auto object-contain" />
-              </div>
-              <p className="mt-2 text-sm font-medium text-gray-800 text-center">{name}</p>
-            </div>
-          ))}
-      </div>
-    </div>
-  </div>
-
-  {/* CSS for marquee animation */}
-  <style jsx>{`
-    @keyframes marquee {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .animate-marquee {
-      animation: marquee 30s linear infinite;
-    }
-  `}</style>
-</section>
 
     </>
   );
