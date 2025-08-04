@@ -61,16 +61,16 @@ export default function Footer() {
 
       {/* Social Media Icons */}
       <div className="mt-6 flex justify-center space-x-6">
-        <a href="https://facebook.com/utilityhub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
+        <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
           <FiFacebook className="text-2xl" />
         </a>
-        <a href="https://twitter.com/utilityhub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
+        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
           <FiTwitter className="text-2xl" />
         </a>
-        <a href="https://instagram.com/utilityhub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
           <FiInstagram className="text-2xl" />
         </a>
-        <a href="https://linkedin.com/company/utilityhub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
+        <a href="https://linkedin.com/company/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
           <FiLinkedin className="text-2xl" />
         </a>
       </div>
