@@ -76,7 +76,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center text-gray-400 text-xs mt-12 tracking-wide select-none">
-        All rights reserved by UtilitySaver.
+        All rights reserved by UtilitySaver Pty Ltd.
       </div>
     </footer>
   );
