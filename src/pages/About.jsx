@@ -186,11 +186,11 @@ export default function AboutUs() {
 </motion.section>
 
 
-
 <section className="bg-white text-black py-16 px-4">
   <div className="max-w-6xl mx-auto text-center">
-    <h2 className="text-4xl font-bold mb-4 transition-all duration-500 hover:text-blue-600">
+    <h2 className="text-4xl font-bold mb-4 transition-all duration-500 hover:text-blue-600 relative inline-block group">
       What Drives Us Forward
+      <span className="block h-1 w-0 group-hover:w-full bg-blue-600 transition-all duration-500 mt-1"></span>
     </h2>
     <p className="text-lg text-black mb-12 transition-opacity duration-500 hover:opacity-80">
       Our Core Principles That Shape Excellence at Utility Saver
@@ -199,15 +199,23 @@ export default function AboutUs() {
       {values.map((item, index) => (
         <div
           key={index}
-          className="bg-white text-slate-900 p-6 rounded-2xl border border-transparent shadow-md hover:border-[#032D4D] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-[1.02]"
+          className="bg-white text-slate-900 p-6 rounded-2xl border border-transparent shadow-md hover:border-blue-600 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-[1.03] group relative overflow-hidden"
         >
-          <div className="mb-4 text-blue-600 transition-colors duration-300">
+          {/* Shine Effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-10 transition duration-500 pointer-events-none"></div>
+
+          {/* Icon with glow on hover */}
+          <div className="mb-4 text-blue-600 text-4xl transition-transform duration-500 group-hover:scale-110 group-hover:text-[#032D4D]">
             {item.icon}
           </div>
-          <h3 className="text-xl font-semibold mb-2 transition-colors duration-300">
+
+          {/* Title with hover animation */}
+          <h3 className="text-xl font-semibold mb-2 text-slate-800 transition-colors duration-500 group-hover:text-[#032D4D]">
             {item.title}
           </h3>
-          <p className="text-sm text-slate-700 transition-opacity duration-300">
+
+          {/* Description with fade effect */}
+          <p className="text-sm text-slate-700 transition-opacity duration-500 group-hover:opacity-90">
             {item.description}
           </p>
         </div>
