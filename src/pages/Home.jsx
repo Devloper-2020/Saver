@@ -192,50 +192,59 @@ export default function HomePage() {
   <br />
 
   
-    {/* 📝 Form + Text Side-by-Side */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12 px-4 sm:px-8 lg:px-16">
+   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12 px-4 sm:px-8 lg:px-16">
 
-      {/* 🧾 Form */}
-      <div>
-   
-
-        <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {[
-              { name: "name", placeholder: "Full Name", type: "text" },
-              { name: "phone", placeholder: "Phone Number", type: "tel" },
-              { name: "email", placeholder: "Email Address", type: "email" },
-              { name: "postcode", placeholder: "Postcode", type: "text" },
-            ].map(({ name, placeholder, type }) => (
-              <input
-                key={name}
-                id={name}
-                name={name}
-                type={type}
-                required
-                placeholder={placeholder}
-                className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
-              />
-            ))}
-          </div>
-
-          <label className="flex items-start gap-3 text-sm leading-snug">
-            <input
-              type="checkbox"
-              required
-              className="mt-1 w-5 h-5 border-[#B3C3D2] rounded focus:ring-2 focus:ring-[#032D4D]"
-            />
-            By ticking this box, I provide my express consent for a Utility Saver representative to contact me to review my electricity and gas bills and negotiate a supply and sale contract.
-          </label>
-
-          <button
-            type="submit"
-            className="bg-sky-600 hover:bg-sky-700 text-white w-full py-4 rounded-md transition font-semibold text-lg shadow-sm"
-          >
-            Register Now
-          </button>
-        </form>
+  {/* 🧾 Form */}
+  <div>
+    <form
+      action="https://getform.io/f/bdrgoezb"
+      method="POST"
+      className="space-y-8"
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {[
+          { name: "name", placeholder: "Full Name", type: "text" },
+          { name: "phone", placeholder: "Phone Number", type: "tel" },
+          { name: "email", placeholder: "Email Address", type: "email" },
+          { name: "postcode", placeholder: "Postcode", type: "text" },
+        ].map(({ name, placeholder, type }) => (
+          <input
+            key={name}
+            id={name}
+            name={name}
+            type={type}
+            required
+            placeholder={placeholder}
+            className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
+          />
+        ))}
       </div>
+
+      {/* ✅ Honeypot anti-spam field */}
+      <input type="hidden" name="_gotcha" style={{ display: "none" }} />
+
+      {/* ✅ Checkbox with hidden input */}
+      <input type="hidden" name="consent" value="no" />
+      <label className="flex items-start gap-3 text-sm leading-snug">
+        <input
+          type="checkbox"
+          name="consent"
+          value="yes"
+          required
+          className="mt-1 w-5 h-5 border-[#B3C3D2] rounded focus:ring-2 focus:ring-[#032D4D]"
+        />
+        By ticking this box, I provide my express consent for a Utility Saver representative to contact me to review my electricity and gas bills and negotiate a supply and sale contract.
+      </label>
+
+      <button
+        type="submit"
+        className="bg-sky-600 hover:bg-sky-700 text-white w-full py-4 rounded-md transition font-semibold text-lg shadow-sm"
+      >
+        Register Now
+      </button>
+    </form>
+  </div>
+
 
       {/* 📢 Text Section */}
       {/* 📢 Text Section */}
