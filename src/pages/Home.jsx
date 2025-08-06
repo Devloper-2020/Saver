@@ -50,6 +50,44 @@ export default function HomePage() {
   const [current, setCurrent] = useState(0);
   const scrollRef = useRef(null);
 
+const validate = (formData) => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = "Full Name is required.";
+    if (!formData.phone.match(/^\d{10,15}$/))
+      newErrors.phone = "Enter a valid phone number.";
+    if (
+      !formData.email.match(
+        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+      )
+    )
+      newErrors.email = "Enter a valid email address.";
+    if (!formData.postcode.trim())
+      newErrors.postcode = "Postcode is required.";
+
+    if (!formData.consent)
+      newErrors.consent = "You must agree before submitting.";
+
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    const form = e.target;
+    const formData = {
+      name: form.name.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      postcode: form.postcode.value,
+      consent: form.consent.checked,
+    };
+
+    const foundErrors = validate(formData);
+    setErrors(foundErrors);
+
+    if (Object.keys(foundErrors).length > 0) {
+      e.preventDefault(); // Prevent submission if validation fails
+    }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -196,53 +234,88 @@ export default function HomePage() {
 
   {/* 🧾 Form */}
   <div>
-    <form
-      action="https://getform.io/f/bdrgoezb"
-      method="POST"
-      className="space-y-8"
-    >
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {[
-          { name: "name", placeholder: "Full Name", type: "text" },
-          { name: "phone", placeholder: "Phone Number", type: "tel" },
-          { name: "email", placeholder: "Email Address", type: "email" },
-          { name: "postcode", placeholder: "Postcode", type: "text" },
-        ].map(({ name, placeholder, type }) => (
-          <input
-            key={name}
-            id={name}
-            name={name}
-            type={type}
-            required
-            placeholder={placeholder}
-            className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
-          />
-        ))}
-      </div>
+ <form
+  action="https://getform.io/f/bdrgoezb"
+  method="POST"
+  className="space-y-8"
+>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <input
+      id="name"
+      name="name"
+      type="text"
+      required
+      placeholder="Full Name"
+      pattern="^[A-Za-z\s]+$"
+      title="Please enter letters and spaces only"
+      className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
+    />
+   <input
+  id="phone"
+  name="phone"
+  type="tel"
+  required
+  placeholder="Phone Number (10 digits only)"
+  pattern="^\d{10}$"
+  title="Enter exactly 10 digits with no letters or symbols"
+  inputMode="numeric"
+  maxLength={10}
+  onInput={(e) => {
+    e.target.value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+  }}
+  className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
+/>
 
-      {/* ✅ Honeypot anti-spam field */}
-      <input type="hidden" name="_gotcha" style={{ display: "none" }} />
+    <input
+      id="email"
+      name="email"
+      type="email"
+      required
+      placeholder="Email Address"
+      className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
+    />
+   <input
+  id="postcode"
+  name="postcode"
+  type="text"
+  required
+  placeholder="Enter 4-digit postcode"
+  pattern="^\d{4}$"
+  maxLength={4}
+  title="Enter exactly 4 digits (no letters or symbols)"
+  inputMode="numeric"
+  onInput={(e) => {
+    e.target.value = e.target.value.replace(/\D/g, ''); // Only digits
+  }}
+  className="px-5 py-3 border border-[#B3C3D2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#032D4D] text-[#032D4D] placeholder-gray-400 bg-white shadow-sm"
+/>
 
-      {/* ✅ Checkbox with hidden input */}
-      <input type="hidden" name="consent" value="no" />
-      <label className="flex items-start gap-3 text-sm leading-snug">
-        <input
-          type="checkbox"
-          name="consent"
-          value="yes"
-          required
-          className="mt-1 w-5 h-5 border-[#B3C3D2] rounded focus:ring-2 focus:ring-[#032D4D]"
-        />
-        By ticking this box, I provide my express consent for a Utility Saver representative to contact me to review my electricity and gas bills and negotiate a supply and sale contract.
-      </label>
+  </div>
 
-      <button
-        type="submit"
-        className="bg-sky-600 hover:bg-sky-700 text-white w-full py-4 rounded-md transition font-semibold text-lg shadow-sm"
-      >
-        Register Now
-      </button>
-    </form>
+  {/* ✅ Honeypot anti-spam field */}
+  <input type="hidden" name="_gotcha" style={{ display: "none" }} />
+
+  {/* ✅ Checkbox with hidden input */}
+  <input type="hidden" name="consent" value="no" />
+  <label className="flex items-start gap-3 text-sm leading-snug">
+    <input
+      type="checkbox"
+      name="consent"
+      value="yes"
+      required
+      className="mt-1 w-5 h-5 border-[#B3C3D2] rounded focus:ring-2 focus:ring-[#032D4D]"
+    />
+    By ticking this box, I provide my express consent for a Utility Saver representative to contact me to review my electricity and gas bills and negotiate a supply and sale contract.
+  </label>
+
+  <button
+    type="submit"
+    className="bg-sky-600 hover:bg-sky-700 text-white w-full py-4 rounded-md transition font-semibold text-lg shadow-sm"
+  >
+    Register Now
+  </button>
+</form>
+
   </div>
 
 
