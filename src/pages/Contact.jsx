@@ -33,13 +33,18 @@ export default function Contact() {
             <p className="text-black text-lg">
               <strong className="text-gray-900">ACN: 688072639</strong>
             </p>
-            <p className="text-black text-lg">
-              <strong className="text-gray-900">Email: info@utilitysaver.com.au</strong>{" "}
-              <a
-                href="mailto:"
-                className="text-sky-600 underline hover:text-sky-800 transition"
-              ></a>
-            </p>
+           <p className="text-black text-lg">
+  <strong className="text-gray-900">
+     Email: 
+    <a
+      href="mailto:info@utilitysaver.com.au"
+      className="text-sky-600 underline hover:text-sky-800 transition"
+    >
+     info@utilitysaver.com.au
+    </a>
+  </strong>
+</p>
+
 
             <div className="bg-sky-50 p-6 rounded-xl space-y-4 border border-sky-200 shadow-inner">
               <div className="flex items-center gap-4">
