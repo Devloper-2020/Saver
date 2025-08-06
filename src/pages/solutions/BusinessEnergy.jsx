@@ -230,7 +230,8 @@ const BusinessEnergy = () => {
                   className="mt-1"
                 />
                 <label className="text-sm">
-                  I agree to receive calls from UtilitySaver and consent to be contacted regarding energy plans.
+                By ticking this box, I provide my express consent for a Utility Saver representative to contact me to review my electricity and gas bills and negotiate a supply and sale contract.
+
                 </label>
               </div>
               {errors.consent && <p className="text-red-500 text-sm">{errors.consent}</p>}
