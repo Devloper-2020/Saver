@@ -3,35 +3,41 @@ import { motion } from 'framer-motion';
 
 const BusinessEnergy = () => {
   const formRef = useRef(null);
+  const containerRef = useRef(null); // For form height tracking
   const [formHeight, setFormHeight] = useState(null);
 
   useEffect(() => {
-    if (formRef.current) {
-      setFormHeight(formRef.current.offsetHeight);
+    if (containerRef.current) {
+      setFormHeight(containerRef.current.offsetHeight);
     }
   }, []);
 
+  const handleFormSubmit = (e) => {
+    // Delay to allow Getform.io to capture data
+    setTimeout(() => {
+      formRef.current.reset(); // Reset form fields
+    }, 500);
+  };
+
   return (
     <div className="bg-gray-50">
-    {/* Hero Section */}
-  <section className="bg-[#032D4D] py-16">
-   <div className="max-w-7xl mx-auto px-6 text-center">
-    <div className="text-center">
-      <h1 className="text-white text-4xl md:text-5xl font-bold">
-        Business Energy Solution
-      </h1>
-      <p className="text-lg text-white mt-4 max-w-2xl mx-auto">
-        Compare electricity, gas, or broadband and save on your bills in just a few easy steps.
-      </p>
-    </div>
-  </div>
-</section>
-
+      {/* Hero Section */}
+      <section className="bg-[#032D4D] py-16">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <div className="text-center">
+            <h1 className="text-white text-4xl md:text-5xl font-bold">
+              Business Energy Solution
+            </h1>
+            <p className="text-lg text-white mt-4 max-w-2xl mx-auto">
+              Compare electricity, gas, or broadband and save on your bills in just a few easy steps.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Compare Form Section */}
       <section id="compare-form" className="bg-white pt-8 pb-16 min-h-screen flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-
           {/* Left Image Card */}
           <motion.div
             style={{ height: formHeight ? `${formHeight}px` : 'auto' }}
@@ -57,7 +63,7 @@ const BusinessEnergy = () => {
 
           {/* Right Form */}
           <motion.div
-            ref={formRef}
+            ref={containerRef}
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -67,11 +73,13 @@ const BusinessEnergy = () => {
               Compare & Save on Energy Bills
             </h2>
 
-            {/* Form */}
-           <form action="https://getform.io/f/bxoyddna" method="POST"
+            <form
+              action="https://getform.io/f/bxoyddna"
+              method="POST"
+              ref={formRef}
+              onSubmit={handleFormSubmit}
               className="space-y-6"
             >
-              {/* Full Name */}
               <div>
                 <label className="block font-medium mb-2">Full Name:</label>
                 <input
@@ -83,7 +91,6 @@ const BusinessEnergy = () => {
                 />
               </div>
 
-              {/* Phone Number */}
               <div>
                 <label className="block font-medium mb-2">Phone Number:</label>
                 <input
@@ -95,7 +102,6 @@ const BusinessEnergy = () => {
                 />
               </div>
 
-              {/* Service Type */}
               <div>
                 <label className="block font-medium mb-2">Choose a service:</label>
                 <div className="flex gap-6">
@@ -108,7 +114,6 @@ const BusinessEnergy = () => {
                 </div>
               </div>
 
-              {/* Retailer - Electricity */}
               <div>
                 <label className="block font-medium mb-2">Current Retailer Electricity:</label>
                 <select
@@ -117,15 +122,14 @@ const BusinessEnergy = () => {
                   className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
                 >
                   <option value="">Select your current retailer</option>
-                  <option value="AGL">AGL</option>
-                  <option value="Origin Energy">Origin Energy</option>
-                  <option value="EnergyAustralia">EnergyAustralia</option>
-                  <option value="Red Energy">Red Energy</option>
+                  <option value="Retailer A">Retailer A</option>
+                  <option value="Retailer B">Retailer B</option>
+                  <option value="Retailer C">Retailer C</option>
+                  <option value="Retailer D">Retailer D</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
 
-              {/* Retailer - Gas */}
               <div>
                 <label className="block font-medium mb-2">Current Retailer Gas:</label>
                 <select
@@ -134,15 +138,14 @@ const BusinessEnergy = () => {
                   className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
                 >
                   <option value="">Select your current retailer</option>
-                  <option value="AGL">AGL</option>
-                  <option value="Origin Energy">Origin Energy</option>
-                  <option value="EnergyAustralia">EnergyAustralia</option>
-                  <option value="Red Energy">Red Energy</option>
+                  <option value="Retailer A">Retailer A</option>
+                  <option value="Retailer B">Retailer B</option>
+                  <option value="Retailer C">Retailer C</option>
+                  <option value="Retailer D">Retailer D</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
 
-              {/* Consent */}
               <div className="flex items-start gap-2">
                 <input type="checkbox" name="consent" required className="mt-1" />
                 <label className="text-sm">
@@ -150,7 +153,6 @@ const BusinessEnergy = () => {
                 </label>
               </div>
 
-              {/* Submit Button */}
               <div className="text-center">
                 <button
                   type="submit"
