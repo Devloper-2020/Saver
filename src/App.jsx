@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/About";
 import Contact from "./pages/Contact";
 import Compare from "./pages/Compare";
+
 import HomeEnergy from "./pages/solutions/HomeEnergy";
 import BusinessEnergy from "./pages/solutions/BusinessEnergy";
 import Commercial from "./pages/solutions/Commercial";
@@ -22,13 +23,14 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/compare" element={<Compare />} />
+      
           <Route path="/solutions/home" element={<HomeEnergy />} />
           <Route path="/solutions/business" element={<BusinessEnergy />} />
           <Route path="/solutions/commercial" element={<Commercial />} />
           <Route path="/solutions/solar" element={<Solar />} />
         </Routes>
         <Footer />
-        <Chatbot />
+       
       </div>
     </Router>
   );
