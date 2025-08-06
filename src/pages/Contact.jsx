@@ -34,7 +34,7 @@ export default function Contact() {
               <strong className="text-gray-900">ACN: 688072639</strong>
             </p>
             <p className="text-black text-lg">
-              <strong className="text-gray-900">Email:</strong>{" "}
+              <strong className="text-gray-900">Email: info@utilitysaver.com.au</strong>{" "}
               <a
                 href="mailto:"
                 className="text-sky-600 underline hover:text-sky-800 transition"
@@ -50,7 +50,7 @@ export default function Contact() {
               </div>
               <p className="text-sm text-black max-w-md leading-relaxed">
                 Text us for a quote or callback. Our consultant will reach you within{" "}
-                <strong>3 minutes</strong> (Mon–Fri, 11am–7pm).
+                <strong>3 minutes</strong> (Mon – Sat,  9:00 AM - 6:00 PM).
               </p>
             </div>
 
