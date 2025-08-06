@@ -86,11 +86,11 @@ export default function AboutUs() {
             </h1>
             <br />
             <p className="mb-4">
-              With over 20 years of experience, we’ve made it simple to find the most affordable and reliable energy plans, stress free and at zero cost.
+              With over several years of experience, we’ve made it simple to find the most affordable and reliable energy plans, stress free and at zero cost.
             </p>
             <ul className="list-disc list-inside text-lg space-y-2">
               <li>Free, no obligation service</li>
-              <li>20+ years of trusted experience</li>
+              <li>Several years of trusted experience</li>
               <li>Solutions for homes & businesses</li>
               <li>Fast, friendly support</li>
             </ul>
@@ -223,6 +223,47 @@ export default function AboutUs() {
     </div>
   </div>
 </section>
+<section className="py-20 px-4 sm:px-8 md:px-20 bg-[#032D4D] text-white">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-4xl font-bold text-center mb-12">Meet Our Team</h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      {[
+        { name: 'Jagdeep', role: 'Director', email: 'jagdeep@utilitysaver.com.au', img: '/Jagdeep.png' },
+        { name: 'Rekha Sharma', role: 'Director', email: 'rekha.sharma@utilitysaver.com.au', img: '/re.png' },
+        { name: 'Karan Sharma', role: 'Director', email: 'karan.sharma@utilitysaver.com.au', img: '/karan.jpg' },
+        { name: 'Bilal Fareedzai', role: 'Director', email: 'bilal.fareedzai@utilitysaver.com.au', img: '/Bilal.jpg' },
+        { name: 'Sajad Afghangzoi', role: 'Director', email: 'sajad.afghanzoi@utilitysaver.com.au', img: '/Sajad.jpg' },
+      ].map((member, idx) => (
+        <div
+          key={idx}
+          className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 hover:border-[#00B2FF] hover:border transition-all duration-300 ease-in-out overflow-hidden transform w-full max-w-[330px] mx-auto flex flex-col"
+        >
+          <div className="h-[300px] sm:h-[320px] md:h-[300px] overflow-hidden">
+            <img
+              src={member.img}
+              alt={member.name}
+              className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ease-in-out"
+            />
+          </div>
+          <div className="flex-grow p-4 text-center flex flex-col justify-center">
+            <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
+            <p className="text-sm text-gray-500">{member.role}</p>
+            <p className="text-xs text-gray-600 mt-1 whitespace-nowrap overflow-hidden text-ellipsis">
+              <a
+                href={`mailto:${member.email.trim()}`}
+                className="hover:underline inline-block text-blue-500"
+              >
+                {member.email.trim()}
+              </a>
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
 
 
