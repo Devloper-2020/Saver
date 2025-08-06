@@ -431,11 +431,11 @@ const handleBack = () => {
       className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
     >
       <option value="">Select your current retailer</option>
-      <option value="AGL">AGL</option>
-      <option value="Origin Energy">Origin Energy</option>
-      <option value="EnergyAustralia">EnergyAustralia</option>
-      <option value="Red Energy">Red Energy</option>
-      <option value="Other">Other</option>
+  <option value="Retailer A">Retailer A</option>
+  <option value="Retailer B">Retailer B</option>
+  <option value="Retailer C">Retailer C</option>
+  <option value="Retailer D">Retailer D</option>
+  <option value="Other">Other</option>
     </select>
   </div>
   <div>
@@ -446,11 +446,11 @@ const handleBack = () => {
       className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
     >
       <option value="">Select your current retailer</option>
-      <option value="AGL">AGL</option>
-      <option value="Origin Energy">Origin Energy</option>
-      <option value="EnergyAustralia">EnergyAustralia</option>
-      <option value="Red Energy">Red Energy</option>
-      <option value="Other">Other</option>
+  <option value="Retailer A">Retailer A</option>
+  <option value="Retailer B">Retailer B</option>
+  <option value="Retailer C">Retailer C</option>
+  <option value="Retailer D">Retailer D</option>
+  <option value="Other">Other</option>
     </select>
   </div>
 
