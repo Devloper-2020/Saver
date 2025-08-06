@@ -32,30 +32,55 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact Info */}
-        <div>
-          <h2 className="text-xl font-semibold mb-4 tracking-wide">Contact</h2>
-          <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
-            <FiMail className="text-lg" />
-            <a href="mailto:info@utilitysaver.com.au" className="hover:text-white transition underline">
-              info@utilitysaver.com.au
-            </a>
-          </div>
-          <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
-            <FiPhone className="text-lg" />
-            <span>AU: 0415 644 653 </span>
-          </div>
-          <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
-            <FiMapPin className="text-lg" />
-            <span>U 32 20-22 GEORGE ST, LIVERPOOL NSW 2170</span>
-          </div>
-          <div className="text-gray-300 text-sm mb-2">
-            <span>ABN: 15 688 072 639 </span>
-          </div>
-         <div className="text-gray-300 text-sm mb-2">
-            <span>ACN: 688072639 </span>
-          </div>
-        </div>
+       {/* Contact Info */}
+<div>
+  <h2 className="text-xl font-semibold mb-4 tracking-wide">Contact</h2>
+
+  {/* Email */}
+  <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
+    <FiMail className="text-lg" />
+    <a
+      href="mailto:info@utilitysaver.com.au"
+      className="hover:text-white transition underline"
+    >
+      info@utilitysaver.com.au
+    </a>
+  </div>
+
+  {/* Phone */}
+  <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
+    <FiPhone className="text-lg" />
+    <a
+      href="tel:0415644653"
+      className="hover:text-white transition underline"
+    >
+      AU: 0415 644 653
+    </a>
+  </div>
+
+  {/* Address */}
+  <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
+    <FiMapPin className="text-lg" />
+    <a
+      href="https://www.google.com/maps?q=U+32+20-22+GEORGE+ST,+LIVERPOOL+NSW+2170"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-white transition underline"
+    >
+      U 32 20-22 GEORGE ST, LIVERPOOL NSW 2170
+    </a>
+  </div>
+
+  {/* ABN */}
+  <div className="text-gray-300 text-sm mb-2">
+    <span>ABN: 15 688 072 639</span>
+  </div>
+
+  {/* ACN */}
+  <div className="text-gray-300 text-sm mb-2">
+    <span>ACN: 688072639</span>
+  </div>
+</div>
 
       </div>
 
