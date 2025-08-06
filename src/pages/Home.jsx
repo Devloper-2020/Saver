@@ -178,7 +178,7 @@ export default function HomePage() {
       Scam callers are falsely claiming to be from Utility Saver, asking customers to download unknown software or share banking information.
       <span className="text-green-400 font-semibold"> Utility Saver will never ask you to do this. </span>
        If you receive such a call, please report it immediately by calling us at{" "}
-      <a href="tel:0800123456" className="text-green-300 font-semibold underline">0415644653</a>.
+      <a href="tel:0800123456" className="text-green-300 font-semibold underline">0415 644 653</a>.
     </p>
   </div>
 
