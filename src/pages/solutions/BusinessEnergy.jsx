@@ -3,8 +3,19 @@ import { motion } from 'framer-motion';
 
 const BusinessEnergy = () => {
   const formRef = useRef(null);
-  const containerRef = useRef(null); // For form height tracking
+  const containerRef = useRef(null);
   const [formHeight, setFormHeight] = useState(null);
+
+  const [formData, setFormData] = useState({
+    fullName: '',
+    phone: '',
+    comparisonType: '',
+    retailerElectricity: '',
+    retailerGas: '',
+    consent: false,
+  });
+
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (containerRef.current) {
@@ -12,11 +23,52 @@ const BusinessEnergy = () => {
     }
   }, []);
 
+  const validate = () => {
+    const newErrors = {};
+
+ if (!formData.fullName.trim()) {
+    newErrors.fullName = 'Name is required.';
+  } else if (!/^[A-Za-z\s]+$/.test(formData.fullName)) {
+    newErrors.fullName = 'Name must only contain letters and spaces.';
+  }    if (!formData.phone.match(/^04\d{2} \d{3} \d{3}$/))
+      newErrors.phone = 'Phone must be in format: 04XX XXX XXX';
+
+    if (!formData.comparisonType) newErrors.comparisonType = 'Please select a service.';
+    if (!formData.retailerElectricity) newErrors.retailerElectricity = 'Select a retailer.';
+    if (!formData.retailerGas) newErrors.retailerGas = 'Select a retailer.';
+    if (!formData.consent) newErrors.consent = 'You must agree to be contacted.';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleFormSubmit = (e) => {
-    // Delay to allow Getform.io to capture data
+    if (!validate()) {
+      e.preventDefault();
+      return;
+    }
+
+    // Let Getform.io capture data then reset
     setTimeout(() => {
-      formRef.current.reset(); // Reset form fields
+      formRef.current.reset();
+      setFormData({
+        fullName: '',
+        phone: '',
+        comparisonType: '',
+        retailerElectricity: '',
+        retailerGas: '',
+        consent: false,
+      });
+      setErrors({});
     }, 500);
+  };
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
   return (
@@ -24,20 +76,16 @@ const BusinessEnergy = () => {
       {/* Hero Section */}
       <section className="bg-[#032D4D] py-16">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="text-center">
-            <h1 className="text-white text-4xl md:text-5xl font-bold">
-              Business Energy Solution
-            </h1>
-            <p className="text-lg text-white mt-4 max-w-2xl mx-auto">
-              Compare electricity, gas, or broadband and save on your bills in just a few easy steps.
-            </p>
-          </div>
+          <h1 className="text-white text-4xl md:text-5xl font-bold">Business Energy Solution</h1>
+          <p className="text-lg text-white mt-4 max-w-2xl mx-auto">
+            Compare electricity, gas, or broadband and save on your bills in just a few easy steps.
+          </p>
         </div>
       </section>
 
       {/* Compare Form Section */}
       <section id="compare-form" className="bg-white pt-8 pb-16 min-h-screen flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           {/* Left Image Card */}
           <motion.div
             style={{ height: formHeight ? `${formHeight}px` : 'auto' }}
@@ -67,9 +115,9 @@ const BusinessEnergy = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white shadow-2xl rounded-3xl p-6 sm:p-8 md:p-10 w-full flex flex-col"
+            className="bg-white shadow-2xl rounded-3xl p-8 w-full flex flex-col"
           >
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6 sm:mb-8 tracking-wide text-center md:text-left">
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-8 tracking-wide text-center md:text-left">
               Compare & Save on Energy Bills
             </h2>
 
@@ -80,46 +128,64 @@ const BusinessEnergy = () => {
               onSubmit={handleFormSubmit}
               className="space-y-6"
             >
+              {/* Full Name */}
               <div>
                 <label className="block font-medium mb-2">Full Name:</label>
                 <input
                   type="text"
                   name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
                   placeholder="Enter your name"
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-300"
                 />
+                {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
               </div>
 
+              {/* Phone */}
               <div>
                 <label className="block font-medium mb-2">Phone Number:</label>
                 <input
                   type="tel"
                   name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   placeholder="04XX XXX XXX"
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-300"
                 />
+                {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
               </div>
 
+              {/* Comparison Type */}
               <div>
                 <label className="block font-medium mb-2">Choose a service:</label>
                 <div className="flex gap-6">
                   {['Electricity', 'Gas', 'Both'].map((type) => (
                     <label key={type} className="flex items-center gap-2">
-                      <input type="radio" name="comparisonType" value={type} required />
+                      <input
+                        type="radio"
+                        name="comparisonType"
+                        value={type}
+                        checked={formData.comparisonType === type}
+                        onChange={handleChange}
+                      />
                       {type}
                     </label>
                   ))}
                 </div>
+                {errors.comparisonType && (
+                  <p className="text-red-500 text-sm">{errors.comparisonType}</p>
+                )}
               </div>
 
+              {/* Retailer Electricity */}
               <div>
                 <label className="block font-medium mb-2">Current Retailer Electricity:</label>
                 <select
                   name="retailerElectricity"
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  value={formData.retailerElectricity}
+                  onChange={handleChange}
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-300"
                 >
                   <option value="">Select your current retailer</option>
                   <option value="Retailer A">Retailer A</option>
@@ -128,14 +194,19 @@ const BusinessEnergy = () => {
                   <option value="Retailer D">Retailer D</option>
                   <option value="Other">Other</option>
                 </select>
+                {errors.retailerElectricity && (
+                  <p className="text-red-500 text-sm">{errors.retailerElectricity}</p>
+                )}
               </div>
 
+              {/* Retailer Gas */}
               <div>
                 <label className="block font-medium mb-2">Current Retailer Gas:</label>
                 <select
                   name="retailerGas"
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  value={formData.retailerGas}
+                  onChange={handleChange}
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-300"
                 >
                   <option value="">Select your current retailer</option>
                   <option value="Retailer A">Retailer A</option>
@@ -144,14 +215,25 @@ const BusinessEnergy = () => {
                   <option value="Retailer D">Retailer D</option>
                   <option value="Other">Other</option>
                 </select>
+                {errors.retailerGas && (
+                  <p className="text-red-500 text-sm">{errors.retailerGas}</p>
+                )}
               </div>
 
+              {/* Consent */}
               <div className="flex items-start gap-2">
-                <input type="checkbox" name="consent" required className="mt-1" />
+                <input
+                  type="checkbox"
+                  name="consent"
+                  checked={formData.consent}
+                  onChange={handleChange}
+                  className="mt-1"
+                />
                 <label className="text-sm">
                   I agree to receive calls from UtilitySaver and consent to be contacted regarding energy plans.
                 </label>
               </div>
+              {errors.consent && <p className="text-red-500 text-sm">{errors.consent}</p>}
 
               <div className="text-center">
                 <button
