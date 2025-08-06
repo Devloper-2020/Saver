@@ -129,8 +129,8 @@ export default function HomePage() {
       <span className="text-green-600">Save Time & Money with the Better Deal</span>
     </h1>
     <p className="mt-6 text-lg text-Black font-medium text-left">
-  For over <span className="underline decoration-white-700">several years</span>, we've been helping Aussies make informed decisions. 
-  Find the better deals quickly and easily join over 500,000 people who’ve already made the switch.Our mission is to save your time and money  by finding better offer from several retailer for <span className="text-green-600">free .</span> 
+  For over <span className=" decoration-white-700">several years</span>, we've been helping Aussies make informed decisions. 
+  Find the better deals quickly and easily join over 500,000 people who’ve already made the switch.Our mission is to save your time and money  by finding better offer from several retailer for <span className="font-extrabold text-green-600">free .</span> 
    
 </p>
 
@@ -525,24 +525,21 @@ export default function HomePage() {
       {[
         {
           question: "Which energy companies can I choose from in Australia?",
-          answer: `In Australia's deregulated market, you can choose from a wide range of authorised retailers...`,
+          answer: `In Australia, you have a variety of energy companies to choose from, including both large established providers and smaller, more specialized retailers.`,
         },
         {
           question: "What’s the process to change my energy provider?",
-          answer: `Start by checking your current plan and recent bill...`,
+          answer: `Switching energy providers is a straightforward process. Your new supplier will handle most of the logistics, including notifying your old provider and taking meter readings. You don't need to contact your old supplier directly or worry about your service being interrupted. `,
         },
         {
           question: "How do I find the right energy plan?",
-          answer: `The right plan varies by household...`,
+          answer: `To find the right energy plan, understand your usage, compare rates, and consider contract terms. Start by analyzing your past energy bills to understand your average monthly usage. Then, compare rates from different providers .`,
         },
         {
           question: "Why are energy prices increasing?",
-          answer: `Rising prices are driven by global events...`,
+          answer: `Energy prices in Australia are increasing due to a combination of factors, including high global energy prices, increased demand due to extreme weather, aging infrastructure, and network costs. `,
         },
-        {
-          question: "What can I do to lower my energy costs?",
-          answer: `Cut costs by switching to LED lighting...`,
-        },
+      
       ].map((faq, index) => (
         <details
           key={index}
