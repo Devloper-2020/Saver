@@ -16,9 +16,9 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const email = "";
+  const email = "info@utilitysaver.com.au";
   const phone = "AU: 0415 644 653";
-  const timings = "Mon - Fri: 9:00 AM - 6:00 PM";
+  const timings = "Mon - Sat: 9:00 AM - 6:00 PM";
 
   const socialLinks = [
     {
@@ -88,14 +88,17 @@ export default function Navbar() {
 
       {/* Main Navbar */}
       <nav className="bg-white/90 backdrop-blur-md shadow-lg font-outfit">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex justify-between items-center">
+
           {/* Logo */}
-          <a
-            href="/"
-            className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500 select-none"
-          >
-            Utilty Saver<span className="text-blue-500">⚡</span>
-          </a>
+   <a href="/" className="block flex-shrink-0">
+  <img
+    src="/l (2).png"
+    alt="Utility Saver Logo"
+    className="h-20 w-48 object-contain"
+  />
+</a>
+
 
           {/* Desktop Nav */}
           <ul className="hidden md:flex gap-8 text-gray-900 font-medium text-lg items-center">
