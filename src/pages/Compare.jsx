@@ -18,6 +18,13 @@ const [comparisonType, setComparisonType] = useState("");
 const [customerType, setCustomerType] = useState("");
 const sections = ["Electricity", "Gas", "Broadband", "Solar", "Batteries"];
  const [activeSection, setActiveSection] = useState(null); 
+ const scrollToForm = () => {
+  const form = document.getElementById("comparison-form");
+  if (form) {
+    form.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
   const data = {
     Electricity: [
       {
@@ -106,11 +113,7 @@ const handleBack = () => {
   const next = () => step < 4 && setStep(step + 1);
   const prev = () => step > 1 && setStep(step - 1);
 
-  const scrollToForm = () => {
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+
 
   useEffect(() => {
     if (formRef.current) {
@@ -250,12 +253,13 @@ const handleBack = () => {
 
         {/* CTA */}
         <div className="mt-8">
-          <button
-            onClick={scrollToForm}
-            className="bg-blue-600 text-white hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition hover:scale-105 active:scale-95"
-          >
-            Start Comparing
-          </button>
+         <button
+  onClick={scrollToForm}
+  className="bg-blue-600 text-white hover:bg-blue-800 font-semibold px-6 py-3 rounded-full shadow-lg transition hover:scale-105 active:scale-95"
+>
+  Start Comparing
+</button>
+
         </div>
       </div>
     </motion.div>
@@ -340,373 +344,137 @@ const handleBack = () => {
         `}</style>
       </section>
 
-    {/* Form Section */}
-<section id="compare-form" className="bg-white pt-8 pb-16 min-h-screen flex items-center">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+<section className="bg-white py-16 px-4 sm:px-6 lg:px-12">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
     
-  {/* Left Image Synced to Form Height */}
-<motion.div
-  style={{ height: formHeight || "auto" }}
-  initial={{ opacity: 0, x: -30 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.5 }}
-  className="relative rounded-3xl overflow-hidden border-8 border-black-100 shadow-2xl flex justify-center"
+    {/* LEFT - Info + Image */}
+    <div className="bg-gray-100 p-6 rounded-2xl shadow-lg border border-gray-200">
+      <h2 className="text-2xl font-bold text-[#032D4D] mb-4">Compare Energy Plans</h2>
+      <p className="text-sm text-gray-700 mb-4">
+        Find better rates and save more on electricity and gas. Switch in just a few clicks!
+      </p>
+      <ul className="list-disc list-inside text-gray-600 text-sm space-y-1 mb-4">
+        <li>Access to top Australian energy providers</li>
+        <li>Quick and seamless switching process</li>
+        <li>No paperwork – we handle everything</li>
+        <li>100% free, independent comparisons</li>
+      </ul>
+      <p className="text-xs italic text-gray-500">
+        Helping thousands of Aussies save every year — <span className="font-semibold">start your comparison now.</span>
+      </p>
+
+      {/* IMAGE */}
+      <div className="mt-6 rounded-lg overflow-hidden">
+        <img
+          src="/com.jpg"
+          alt="Energy Comparison"
+          className="w-full h-[300px] sm:h-[400px] object-cover rounded-lg"
+        />
+      </div>
+    </div>
+
+  <form   id="comparison-form" action="https://getform.io/f/aronkkpb" method="POST"
+  className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
 >
-  {/* Image */}
-  <img
-    src="/com.jpg"
-    alt="Energy Comparison"
-    className="object-cover w-full h-full max-h-[600px] md:min-h-[500px]"
-  />
+  <h2 className="text-2xl font-bold text-center text-[#032D4D]">
+    Compare Energy Plans
+  </h2>
 
-  {/* Full-width Text Overlay */}
-  <div className="absolute bottom-0 left-0 w-full bg-gray-200/90 text-black-900 p-6 rounded-t-xl">
- <strong>   <h3 className="text-2xl font-bold">Compare Energy Plans</h3></strong>
-    <p className="text-sm mt-2">
-      Find better rates and save more on electricity and gas. Switch in just a few clicks!
-    </p>
-
-    <h4 className="text-sm font-semibold mt-4">Why Choose Us?</h4>
-    <ul className="list-disc list-inside text-sm mt-1 space-y-1">
-      <li>Access to top Australian energy providers</li>
-      <li>Quick and seamless switching process</li>
-      <li>No paperwork  we handle everything</li>
-      <li>100% free, independent comparisons</li>
-    </ul>
-
-    <strong><p className="text-xs mt-4 italic text-black-900">
-      Helping thousands of Aussies save every year — start your comparison now.
-    </p></strong>
+  {/* Full Name */}
+  <div>
+    <label className="block font-medium mb-2">Full Name:</label>
+    <input
+      type="text"
+      name="fullName"
+      placeholder="Enter your name"
+      required
+      className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+    />
   </div>
-</motion.div>
 
-
-
-    {/* Right Form */}
-    <motion.div
-      ref={formRef}
-      initial={{ opacity: 0, x: 30 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="bg-white shadow-2xl rounded-3xl p-6 sm:p-8 md:p-10 w-full flex flex-col"
-    >
-     <strong><h1 className={` text-black text-4xl md:text-5xl`}>
-     
-     Compare & Save on Energy Bills
-       </h1></strong><br/>
-        
-  {/* Step Circles */}
-      <div className="flex gap-3 sm:gap-4 mb-8 justify-center md:justify-start flex-wrap">
-        {[1, 2, 3, 4].map((n) => (
-          <div
-            key={n}
-            className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full text-base sm:text-lg font-bold cursor-pointer select-none transition-all duration-300 ${
-              step === n
-                ? "bg-[#032D4D] text-white shadow-lg"
-                : "bg-gray-200 text-gray-600 hover:bg-[#032D4D] hover:text-white"
-            }`}
-            onClick={() => {
-              if (n === 1) {
-                setStep(1);
-              } else {
-                if (
-                  !comparisonType ||
-                  !customerType ||
-                  !name ||
-                  !email ||
-                  !phone ||
-                  !postcode
-                ) {
-                  setShowError(true);
-                  setStep(1);
-                } else {
-                  setShowError(false);
-                  setStep(n);
-                }
-              }
-            }}
-          >
-            {n}
-          </div>
-        ))}
-      </div>
-
-      {/* Step Content with Animation */}
-      <motion.div
-        key={step}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="space-y-6 flex-grow"
-      >
-  
-      {step === 1 && (
-  <>
-    <h3 className="text-xl font-semibold text-whitemb-4">Step 1: Select services below</h3>
-
-
-   {/* First Dropdown - Comparison Type */}
-<label className="font-medium mb-1">
-  Choose For <span className="text-red-500">*</span>
-</label>
-{/* Comparison Type - Radio Buttons */}
-
-<div className="flex flex-wrap gap-4 mt-2">
-  {["Electricity", "Gas", "Both", "Broadband"].map((option) => (
-    <label key={option} className="flex items-center gap-2">
-      <input
-        type="radio"
-        name="comparisonType"
-        value={option}
-        checked={comparisonType === option}
-        onChange={(e) => setComparisonType(e.target.value)}
-        className="accent-blue-600"
-      />
-      {option === "Both" ? "Electricity & Gas" : option}
-    </label>
-  ))}
-</div>
-
-
-{showError && !comparisonType && (
-  <p className="text-red-500 text-sm mt-1">This field is required.</p>
-)}
-
-{/* Radio Button Group - Looking For */}
-<label className="font-medium mt-4 block">
-  Looking For <span className="text-red-500"></span>
-</label>
-<div className="flex items-center gap-6">
-  <label className="flex items-center gap-2">
+  {/* Phone */}
+  <div>
+    <label className="block font-medium mb-2">Phone Number:</label>
     <input
-      type="radio"
-      name="customerType"
-      value="Commercial"
-      checked={customerType === "Commercial"}
-      onChange={(e) => setCustomerType(e.target.value)}
-      className="accent-blue-600"
+      type="tel"
+      name="phone"
+      placeholder="04XX XXX XXX"
+      required
+      className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
     />
-    Commercial
-  </label>
-  <label className="flex items-center gap-2">
-    <input
-      type="radio"
-      name="customerType"
-      value="Residential"
-      checked={customerType === "Residential"}
-      onChange={(e) => setCustomerType(e.target.value)}
-      className="accent-blue-600"
-    />
-    Residential
-  </label>
-</div>
+  </div>
 
-    <input type="text" placeholder="Your Full Name" className={inputStyle} required />
-    <input type="email" placeholder="Your Email" className={inputStyle} required />
-    <input type="tel" placeholder="Your Phone Number" className={inputStyle} required />
-    <input type="text" placeholder="Postcode" className={inputStyle} required />
-
-    <button
-      onClick={() => {
-        if (!comparisonType) {
-          setShowError(true);
-        } else {
-          setShowError(false);
-          handleNext();
-        }
-      }}
-      className="px-4 py-2 bg-blue-600 text-white rounded"
-    >
-      Next
-    </button>
-  </>
-)}
-
- {/* Step 2 */}
-{step === 2 && (
-  <>
-    <h3 className="text-xl font-semibold text-white-600 mb-4">Step 2: Usage Details</h3>
-
-    {(comparisonType === "Electricity" || comparisonType === "Both") && (
-      <>
-        <h4 className="text-lg font-medium text-gray-700 mb-2">Electricity Usage</h4>
-        <select className={inputStyle}>
-          <option>Select Existing Electricity Retailer</option>
-          <option>Retailer A</option>
-          <option>Retailer B</option>
-        </select>
-        <div className="grid grid-cols-2 gap-4">
-          {["Peak", "Off Peak", "Shoulder", "Controlled Load", "Solar"].map((label) => (
-            <React.Fragment key={label}>
-              <input
-                type="text"
-                placeholder={`${label} Usage (e.g., 100kWh)`}
-                className={inputStyle}
-              />
-              <input
-                type="text"
-                placeholder={`${label} Rate (e.g., 30c/kWh)`}
-                className={inputStyle}
-              />
-            </React.Fragment>
-          ))}
-        </div>
-        <input
-          type="text"
-          placeholder="Electricity Monthly Spend (e.g., $200)"
-          className={inputStyle}
-        />
-      </>
-    )}
-
-    {(comparisonType === "Gas" || comparisonType === "Both") && (
-      <>
-        <h4 className="text-lg font-medium text-gray-700 mt-6 mb-2">Gas Usage</h4>
-        <select className={inputStyle}>
-          <option>Select Existing Gas Retailer</option>
-          <option>Retailer X</option>
-          <option>Retailer Y</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Gas Monthly Spend (e.g., $100)"
-          className={inputStyle}
-        />
-      </>
-    )}
-
-    
-      {["Service to property Chagre Usuage", "Service to property Chagre Rate"].map((label) => (
-        <React.Fragment key={label}>
+  {/* Choose a Service */}
+  <div>
+    <label className="block font-medium mb-2">Choose a service:</label>
+    <div className="flex gap-6">
+      {["Electricity", "Gas", "Both"].map((type) => (
+        <label key={type} className="flex items-center gap-2">
           <input
-            type="text"
-            placeholder={`${label} Usage (e.g., 10 units)`}
-            className={inputStyle}
+            type="radio"
+            name="comparisonType"
+            value={type}
+            required
           />
-        
-        </React.Fragment>
+          {type}
+        </label>
       ))}
-  
-   
-    <div className="flex justify-between mt-6">
-      <button onClick={handleBack} className="px-4 py-2 bg-blue-600 text-white rounded">
-        Back
-      </button>
-      <button onClick={handleNext} className="px-4 py-2 bg-blue-600 text-white rounded">
-        Next
-      </button>
     </div>
-  </>
-)}
+  </div>
 
+  {/* Retailer Name Dropdowns with Unique Names */}
+  <div>
+    <label className="block font-medium mb-2">Current Retailer Electricity:</label>
+    <select
+      name="retailerElectricity"
+      required
+      className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+    >
+      <option value="">Select your current retailer</option>
+      <option value="AGL">AGL</option>
+      <option value="Origin Energy">Origin Energy</option>
+      <option value="EnergyAustralia">EnergyAustralia</option>
+      <option value="Red Energy">Red Energy</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div>
+    <label className="block font-medium mb-2">Current Retailer Gas:</label>
+    <select
+      name="retailerGas"
+      required
+      className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+    >
+      <option value="">Select your current retailer</option>
+      <option value="AGL">AGL</option>
+      <option value="Origin Energy">Origin Energy</option>
+      <option value="EnergyAustralia">EnergyAustralia</option>
+      <option value="Red Energy">Red Energy</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
 
-      {/* Step 3 */}
-      {step === 3 && (
-        <>
-          <h3 className="text-xl font-semibold text-white-600 mb-4">Step 3: Bill Details</h3>
-
-          {(comparisonType === "Electricity" || comparisonType === "Both") && (
-            <input type="text" maxLength={11} placeholder="NMI (11-digit number)" className={inputStyle} />
-          )}
-          {(comparisonType === "Gas" || comparisonType === "Both") && (
-            <input type="text" maxLength={11} placeholder="MIRN (11-digit number)" className={inputStyle} />
-          )}
-
-          <select className={inputStyle}>
-            <option value="">Are you a pensioner?</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-
-          <select className={inputStyle}>
-            <option value="">Do you have solar panels?</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-
-          <select className={inputStyle}>
-            <option value="">Do you have a life support machine?</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-
-          <div className="flex justify-between mt-6">
-            <button onClick={handleBack} className="px-4 py-2 bg-blue-600 text-white rounded">
-              Back
-            </button>
-            <button onClick={handleNext} className="px-4 py-2 bg-blue-600 text-white rounded">
-              Next
-            </button>
-          </div>
-        </>
-      )}
-
-{/* Step 4 */}
-{step === 4 && (
-  <>
-    <h3 className="text-xl font-semibold text-white-600 mb-2">Step 4: Contact & Upload</h3>
-
-    {(comparisonType === "Electricity" || comparisonType === "Both") && (
-      <div className="mt-2">
-        <label className="block text-sm font-medium text-gray-700">
-          Upload Electricity Bill
-          <input type="file" className="mt-1 w-full rounded-md border border-gray-300 p-2" />
-        </label>
-        <label className="flex items-center gap-2 text-sm mt-0.5">
-          <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
-          I don't have an electricity bill
-        </label>
-      </div>
-    )}
-
-    {(comparisonType === "Gas" || comparisonType === "Both") && (
-      <div className="mt-1.5">
-        <label className="block text-sm font-medium text-gray-700">
-          Upload Gas Bill
-          <input type="file" className="mt-1 w-full rounded-md border border-gray-300 p-2" />
-        </label>
-        <label className="flex items-center gap-2 text-sm mt-0.5">
-          <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
-          I don't have a gas bill
-        </label>
-      </div>
-    )}
-
-    <label className="flex items-center gap-2 text-sm mt-1.5">
-      <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
-      I agree to receive calls from UtilitySaver.
+  {/* Consent */}
+  <div className="flex items-start gap-2">
+    <input type="checkbox" name="consent" required className="mt-1" />
+    <label className="text-sm">
+      I agree to receive calls from UtilitySaver and consent to be contacted regarding energy plans.
     </label>
+  </div>
 
-    <p className="text-xs text-gray-600 mt-0.5">
-      ** By ticking this box, I provide my express consent for a UtilityDeals representative to contact me
-      to review my electricity and/or gas bills and negotiate a supply and sale contract.
-    </p>
-  
+  {/* Submit */}
+  <div className="text-center">
+    <button
+      type="submit"
+      className="bg-[#032D4D] text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+    >
+      Submit
+    </button>
+  </div>
+</form>
 
-    <div className="flex justify-between mt-6">
-      <button onClick={handleBack} className="px-4 py-2 bg-blue-600 text-white rounded">
-        Back
-      </button>
-      <button onClick={handleNext} className="px-4 py-2 bg-blue-600 text-white rounded">
-        Submit
-      </button>
-    </div>
-  </>
-)}
-
-     
-    
-  
-
-</motion.div>
-            
-            
-          </motion.div>
-        </div>
-      </section>
-
-
-
+</div>
+</section>
 
  <section className="bg-[#032D4D] text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-24 transition-colors duration-500">
   <strong><h1 className={` text-white text-4xl md:text-5xl`}>
