@@ -12,7 +12,66 @@ const iconStyle = "absolute left-3 top-3.5 w-5 h-5 text-yellow-400 pointer-event
 
 export default function Compare() {
   const [step, setStep] = useState(1);
-  
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phone: "",
+    comparisonType: "",
+    retailerElectricity: "",
+    retailerGas: "",
+    consent: false,
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Full name is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.fullName.trim())) {
+      newErrors.fullName = "Name can only contain letters and spaces.";
+    }
+
+    const phoneRegex = /^04\d{2}\s?\d{3}\s?\d{3}$/;
+    if (!phoneRegex.test(formData.phone.trim())) {
+      newErrors.phone = "Enter a valid Australian mobile (e.g., 04XX XXX XXX).";
+    }
+
+    if (!formData.comparisonType) {
+      newErrors.comparisonType = "Please select a service type.";
+    }
+
+    if (!formData.retailerElectricity) {
+      newErrors.retailerElectricity = "Select your electricity retailer.";
+    }
+
+    if (!formData.retailerGas) {
+      newErrors.retailerGas = "Select your gas retailer.";
+    }
+
+    if (!formData.consent) {
+      newErrors.consent = "You must agree to be contacted.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      e.target.submit(); // Submit to Getform.io
+    }
+  }; 
 const [showError, setShowError] = useState(false);
 const [comparisonType, setComparisonType] = useState("");
 const [customerType, setCustomerType] = useState("");
@@ -373,105 +432,134 @@ const handleBack = () => {
       </div>
     </div>
 
-  <form   id="comparison-form" action="https://getform.io/f/aronkkpb" method="POST"
-  className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
->
-  <h2 className="text-2xl font-bold text-center text-[#032D4D]">
-    Compare Energy Plans
-  </h2>
+ <form
+      id="comparison-form"
+      action="https://getform.io/f/aronkkpb"
+      method="POST"
+      onSubmit={handleSubmit}
+      className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
+    >
+      <h2 className="text-2xl font-bold text-center text-[#032D4D]">
+        Compare Energy Plans
+      </h2>
 
-  {/* Full Name */}
-  <div>
-    <label className="block font-medium mb-2">Full Name:</label>
-    <input
-      type="text"
-      name="fullName"
-      placeholder="Enter your name"
-      required
-      className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
-    />
-  </div>
+      {/* Full Name */}
+      <div>
+        <label className="block font-medium mb-2">Full Name:</label>
+        <input
+          type="text"
+          name="fullName"
+          value={formData.fullName}
+          onChange={handleChange}
+          placeholder="Enter your name"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        />
+        {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
+      </div>
 
-  {/* Phone */}
-  <div>
-    <label className="block font-medium mb-2">Phone Number:</label>
-    <input
-      type="tel"
-      name="phone"
-      placeholder="04XX XXX XXX"
-      required
-      className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
-    />
-  </div>
+      {/* Phone */}
+      <div>
+        <label className="block font-medium mb-2">Phone Number:</label>
+        <input
+          type="tel"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="04XX XXX XXX"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        />
+        {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+      </div>
 
-  {/* Choose a Service */}
-  <div>
-    <label className="block font-medium mb-2">Choose a service:</label>
-    <div className="flex gap-6">
-      {["Electricity", "Gas", "Both"].map((type) => (
-        <label key={type} className="flex items-center gap-2">
-          <input
-            type="radio"
-            name="comparisonType"
-            value={type}
-            required
-          />
-          {type}
+      {/* Choose a Service */}
+      <div>
+        <label className="block font-medium mb-2">Choose a service:</label>
+        <div className="flex gap-6">
+          {["Electricity", "Gas", "Both"].map((type) => (
+            <label key={type} className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="comparisonType"
+                value={type}
+                checked={formData.comparisonType === type}
+                onChange={handleChange}
+              />
+              {type}
+            </label>
+          ))}
+        </div>
+        {errors.comparisonType && (
+          <p className="text-red-500 text-sm">{errors.comparisonType}</p>
+        )}
+      </div>
+
+      {/* Retailer Electricity */}
+      <div>
+        <label className="block font-medium mb-2">Current Retailer Electricity:</label>
+        <select
+          name="retailerElectricity"
+          value={formData.retailerElectricity}
+          onChange={handleChange}
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        >
+          <option value="">Select your current retailer</option>
+          <option value="Retailer A">Retailer A</option>
+          <option value="Retailer B">Retailer B</option>
+          <option value="Retailer C">Retailer C</option>
+          <option value="Retailer D">Retailer D</option>
+          <option value="Other">Other</option>
+        </select>
+        {errors.retailerElectricity && (
+          <p className="text-red-500 text-sm">{errors.retailerElectricity}</p>
+        )}
+      </div>
+
+      {/* Retailer Gas */}
+      <div>
+        <label className="block font-medium mb-2">Current Retailer Gas:</label>
+        <select
+          name="retailerGas"
+          value={formData.retailerGas}
+          onChange={handleChange}
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        >
+          <option value="">Select your current retailer</option>
+          <option value="Retailer A">Retailer A</option>
+          <option value="Retailer B">Retailer B</option>
+          <option value="Retailer C">Retailer C</option>
+          <option value="Retailer D">Retailer D</option>
+          <option value="Other">Other</option>
+        </select>
+        {errors.retailerGas && (
+          <p className="text-red-500 text-sm">{errors.retailerGas}</p>
+        )}
+      </div>
+
+      {/* Consent */}
+      <div className="flex items-start gap-2">
+        <input
+          type="checkbox"
+          name="consent"
+          checked={formData.consent}
+          onChange={handleChange}
+          className="mt-1"
+        />
+        <label className="text-sm">
+          I agree to receive calls from UtilitySaver and consent to be contacted regarding energy plans.
         </label>
-      ))}
-    </div>
-  </div>
+      </div>
+      {errors.consent && <p className="text-red-500 text-sm">{errors.consent}</p>}
 
-  {/* Retailer Name Dropdowns with Unique Names */}
-  <div>
-    <label className="block font-medium mb-2">Current Retailer Electricity:</label>
-    <select
-      name="retailerElectricity"
-      required
-      className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
-    >
-      <option value="">Select your current retailer</option>
-  <option value="Retailer A">Retailer A</option>
-  <option value="Retailer B">Retailer B</option>
-  <option value="Retailer C">Retailer C</option>
-  <option value="Retailer D">Retailer D</option>
-  <option value="Other">Other</option>
-    </select>
-  </div>
-  <div>
-    <label className="block font-medium mb-2">Current Retailer Gas:</label>
-    <select
-      name="retailerGas"
-      required
-      className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
-    >
-      <option value="">Select your current retailer</option>
-  <option value="Retailer A">Retailer A</option>
-  <option value="Retailer B">Retailer B</option>
-  <option value="Retailer C">Retailer C</option>
-  <option value="Retailer D">Retailer D</option>
-  <option value="Other">Other</option>
-    </select>
-  </div>
-
-  {/* Consent */}
-  <div className="flex items-start gap-2">
-    <input type="checkbox" name="consent" required className="mt-1" />
-    <label className="text-sm">
-      I agree to receive calls from UtilitySaver and consent to be contacted regarding energy plans.
-    </label>
-  </div>
-
-  {/* Submit */}
-  <div className="text-center">
-    <button
-      type="submit"
-      className="bg-[#032D4D] text-white px-6 py-2 rounded hover:bg-blue-700 transition"
-    >
-      Submit
-    </button>
-  </div>
-</form>
+      {/* Submit */}
+      <div className="text-center">
+        <button
+          type="submit"
+          className="bg-[#032D4D] text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
 
 </div>
 </section>
