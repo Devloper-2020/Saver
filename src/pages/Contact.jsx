@@ -104,79 +104,85 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Contact Form with Getform */}
-          <form
-            action="https://getform.io/f/azynpjmb"
-            method="POST"
-            className="bg-white p-10 rounded-3xl shadow-lg border border-gray-200 space-y-8 hover:shadow-2xl transition-shadow duration-300"
-          >
-            <h2 className="text-3xl text-sky-700 font-semibold drop-shadow-sm text-center">Send us a Message</h2>
+        <form
+  action="https://getform.io/f/allzooja"
+  method="POST"
+  className="bg-white p-10 rounded-3xl shadow-lg border border-gray-200 space-y-8 hover:shadow-2xl transition-shadow duration-300"
+>
+  <h2 className="text-3xl text-sky-700 font-semibold drop-shadow-sm text-center">
+    Send us a Message
+  </h2>
 
-            <input type="hidden" name="_gotcha" style={{ display: "none" }} />
+  {/* Honeypot field */}
+  <input type="hidden" name="_gotcha" style={{ display: "none" }} />
 
-            <div>
-              <label htmlFor="name" className="block mb-2 text-black font-medium text-lg">
-                Your Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="John Doe"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-500 transition"
-                required
-              />
-            </div>
+  <div>
+    <label htmlFor="name" className="block mb-2 text-black font-medium text-lg">
+      Your Name
+    </label>
+    <input
+      id="name"
+      name="name"
+      type="text"
+      placeholder="John Doe"
+      className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-500 transition"
+      required
+    />
+  </div>
 
-            <div>
-              <label htmlFor="email" className="block mb-2 text-black font-medium text-lg">
-                Your Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="you@example.com"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-500 transition"
-                required
-              />
-            </div>
+  <div>
+    <label htmlFor="email" className="block mb-2 text-black font-medium text-lg">
+      Your Email
+    </label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      placeholder="you@example.com"
+      className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-500 transition"
+      required
+    />
+  </div>
 
-            <div>
-              <label htmlFor="phone" className="block mb-2 text-black font-medium text-lg">
-                Phone
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                placeholder="04XX XXX XXX"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-500 transition"
-              />
-            </div>
+  <div>
+    <label htmlFor="phone" className="block mb-2 text-black font-medium text-lg">
+      Phone
+    </label>
+    <input
+      id="phone"
+      name="phone"
+      type="tel"
+      placeholder="04XX XXX XXX"
+      className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-500 transition"
+    />
+  </div>
 
-            <div>
-              <label htmlFor="message" className="block mb-2 text-black font-medium text-lg">
-                Your Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                placeholder="How can we help you?"
-                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-500 transition resize-none"
-                required
-              />
-            </div>
+  <div>
+    <label htmlFor="message" className="block mb-2 text-black font-medium text-lg">
+      Your Message
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      rows={5}
+      placeholder="How can we help you?"
+      className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 focus:outline-none text-lg placeholder-gray-500 transition resize-none"
+      required
+    />
+  </div>
 
-            <button
-              type="submit"
-              className="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-4 rounded-xl shadow-md transition duration-300"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
+  
+  
+ 
+
+  <button
+    type="submit"
+    className="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-4 rounded-xl shadow-md transition duration-300"
+  >
+    Submit
+  </button>
+</form>
+</div>
 
         {/* Optional Visual */}
         <div className="w-full mt-16">
