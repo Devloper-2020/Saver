@@ -10,7 +10,7 @@ const slides = [
   {
     img: "/slide3.jpg",
     caption:
-      "Helping Aussies for over 25 years with expert advice and unbeatable support. Trusted by more than 500,000 households across the country to find better energy and broadband deals.",
+      "Helping Aussies for over several years with expert advice and unbeatable support. Trusted by several households across the country to find better energy and broadband deals.",
   },
   {
     img: "/slide2.jpg",
@@ -129,8 +129,8 @@ export default function HomePage() {
       <span className="text-green-600">Save Time & Money with the Better Deal</span>
     </h1>
     <p className="mt-6 text-lg text-Black font-medium text-left">
-  For over <span className="underline decoration-white-700">25 years</span>, we've been helping Aussies make informed decisions. 
-  Find the better deals quickly and easily join over 500,000 people who’ve already made the switch.Our mission is to save your time, money  by finding better offer from several retailer for free .
+  For over <span className="underline decoration-white-700">several years</span>, we've been helping Aussies make informed decisions. 
+  Find the better deals quickly and easily join over 500,000 people who’ve already made the switch.Our mission is to save your time and money  by finding better offer from several retailer for <span className="text-green-600">free .</span> 
    
 </p>
 
@@ -176,9 +176,9 @@ export default function HomePage() {
     </h1>
     <p className="mt-4 text-center text-base md:text-lg leading-relaxed">
       Scam callers are falsely claiming to be from Utility Saver, asking customers to download unknown software or share banking information.
-      <span className="text-green-400 font-semibold"> Utility Saver will never ask you to do this.</span>
-      If you receive such a call, please report it immediately by calling us at{" "}
-      <a href="tel:0800123456" className="text-green-300 font-semibold underline">0800 123 456</a>.
+      <span className="text-green-400 font-semibold"> Utility Saver will never ask you to do this. </span>
+       If you receive such a call, please report it immediately by calling us at{" "}
+      <a href="tel:0800123456" className="text-green-300 font-semibold underline">0415644653</a>.
     </p>
   </div>
 
@@ -250,7 +250,7 @@ export default function HomePage() {
     With the cost of living constantly rising, now is the ideal time to see how much you could save by making a switch.
   </p>
   <p className=" text-2xl  font-semibold mb-4 text-justify text-green-300">
-    And the best part? It’s completely free!
+    And the best part is It’s completely free!
   </p>
 </div>
 
