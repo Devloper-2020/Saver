@@ -134,7 +134,7 @@ const HomeEnergy = () => {
 
             <form
               onSubmit={handleSubmit}
-              action={import.meta.env.VITE_GETFORM_ENDPOINTH}
+              action="https://getform.io/f/bwnwxxea"
               method="POST"
               className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
             >
