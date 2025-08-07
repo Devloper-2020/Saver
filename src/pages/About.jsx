@@ -253,6 +253,10 @@ export default function AboutUs() {
           name: "Sajad Afghangzoi",
           email: "sajad.afghanzoi@utilitysaver.com.au",
         },
+         {
+          name: "Mandeep Singh",
+          email: "mandeep.singh@utilitysaver.com.au",
+        },
       ].map((member, index) => (
         <div
           key={index}
