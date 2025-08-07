@@ -25,7 +25,6 @@ export default function Contact() {
   const handleNameChange = (e) => {
     const value = e.target.value;
     setName(value);
-
     if (!/^[A-Za-z\s]*$/.test(value)) {
       setNameError("Name must only contain letters and spaces.");
     } else {
@@ -36,7 +35,6 @@ export default function Contact() {
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmail(value);
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
       setEmailError("Please enter a valid email address.");
@@ -48,10 +46,9 @@ export default function Contact() {
   const handlePhoneChange = (e) => {
     const value = e.target.value;
     setPhone(value);
-
-    const phoneRegex = /^04\d{2} \d{3} \d{3}$/;
-    if (value && !phoneRegex.test(value)) {
-      setPhoneError("Phone must be in format: 04XX XXX XXX");
+    const phoneRegex = /^0\d{9}$/; // Starts with 0, total 10 digits
+    if (!phoneRegex.test(value.trim())) {
+      setPhoneError("Enter a valid 10-digit number starting with 0.");
     } else {
       setPhoneError("");
     }
@@ -60,7 +57,6 @@ export default function Contact() {
   const handleMessageChange = (e) => {
     const value = e.target.value;
     setMessage(value);
-
     if (value.trim().length < 10) {
       setMessageError("Message must be at least 10 characters.");
     } else {
@@ -87,9 +83,9 @@ export default function Contact() {
       hasError = true;
     }
 
-    const phoneRegex = /^04\d{2} \d{3} \d{3}$/;
+    const phoneRegex = /^0\d{9}$/;
     if (phone && !phoneRegex.test(phone)) {
-      setPhoneError("Phone must be in format: 04XX XXX XXX");
+      setPhoneError("Enter a valid 10-digit number starting with 0.");
       hasError = true;
     }
 
@@ -119,11 +115,9 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
-          {/* Company Info Card */}
+          {/* Info Card */}
           <div className="bg-white p-10 rounded-3xl shadow-lg border border-gray-200 space-y-8 hover:shadow-2xl transition-shadow duration-300">
-            <h2 className="text-3xl font-semibold text-sky-700 text-center">
-              Utility Saver
-            </h2>
+            <h2 className="text-3xl font-semibold text-sky-700 text-center">Utility Saver</h2>
             <br />
             <p className="text-black text-lg">
               <strong className="text-gray-900">ACN: 688072639</strong>
@@ -161,9 +155,7 @@ export default function Contact() {
               <div className="flex items-start gap-4">
                 <Mic className="text-yellow-600 mt-1" size={26} />
                 <div>
-                  <p className="font-semibold text-black text-lg mb-2">
-                    Leave a Voice Message:
-                  </p>
+                  <p className="font-semibold text-black text-lg mb-2">Leave a Voice Message:</p>
                   <ul className="list-disc list-inside text-black text-md space-y-1">
                     <li></li>
                     <li></li>
@@ -200,16 +192,13 @@ export default function Contact() {
 
           {/* Contact Form */}
           <form
-             action={import.meta.env.VITE_GETFORM_ENDPOINTContact}
+            action={import.meta.env.VITE_GETFORM_ENDPOINTContact}
             method="POST"
             onSubmit={handleSubmit}
             className="bg-white p-10 rounded-3xl shadow-lg border border-gray-200 space-y-8 hover:shadow-2xl transition-shadow duration-300"
           >
-            <h2 className="text-3xl text-sky-700 font-semibold text-center">
-              Send us a Message
-            </h2>
+            <h2 className="text-3xl text-sky-700 font-semibold text-center">Send us a Message</h2>
 
-            {/* Honeypot */}
             <input type="hidden" name="_gotcha" style={{ display: "none" }} />
 
             {/* Name */}
@@ -251,7 +240,7 @@ export default function Contact() {
             {/* Phone */}
             <div>
               <label htmlFor="phone" className="block mb-2 text-black font-medium text-lg">
-                Phone
+                Phone Number
               </label>
               <input
                 id="phone"
@@ -259,8 +248,9 @@ export default function Contact() {
                 type="tel"
                 value={phone}
                 onChange={handlePhoneChange}
-                placeholder="04XX XXX XXX"
+                placeholder="0XXXXXXXXX"
                 className="w-full p-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-sky-400 text-lg"
+                required
               />
               {phoneError && <p className="text-red-500 mt-1 text-sm">{phoneError}</p>}
             </div>
