@@ -84,6 +84,12 @@ const sections = ["Electricity", "Gas", "Broadband", "Solar", "Batteries"];
   if (form) {
     form.scrollIntoView({ behavior: "smooth" });
   }
+   if (
+      !formData.email.match(
+        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+      )
+    )
+      newErrors.email = "Enter a valid email address.";
 };
 
   const data = {
@@ -458,8 +464,17 @@ const handleBack = () => {
         />
         {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
       </div>
-
-   
+ <div>
+        <label className="block font-medium mb-2">Email:</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      required
+      placeholder="Email Address"
+     className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+    />
+   </div>
 <div>
   <label className="block font-medium mb-2">Phone Number:</label>
   <input
@@ -528,7 +543,7 @@ const handleBack = () => {
           <option value="Retailer A">Retailer A</option>
           <option value="Retailer B">Retailer B</option>
           <option value="Retailer C">Retailer C</option>
-            <option value="No">No</option>
+          <option value="No">No</option>
           <option value="Other">Other</option>
         </select>
         {errors.retailerGas && (
