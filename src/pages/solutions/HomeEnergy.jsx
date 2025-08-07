@@ -2,9 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const HomeEnergy = () => {
+  const [step, setStep] = useState(1);
+  const [formHeight, setFormHeight] = useState(null);
+  const formRef = useRef(null);
+
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
+    email: '', // ✅ New email field
     comparisonType: '',
     retailerElectricity: '',
     retailerGas: '',
@@ -12,14 +17,12 @@ const HomeEnergy = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [formHeight, setFormHeight] = useState(null);
-  const formRef = useRef(null);
 
   useEffect(() => {
     if (formRef.current) {
       setFormHeight(formRef.current.offsetHeight);
     }
-  }, [formData.comparisonType]);
+  }, [step]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -33,6 +36,11 @@ const HomeEnergy = () => {
     const phoneRegex = /^0\d{9}$/;
     if (!phoneRegex.test(formData.phone.trim())) {
       newErrors.phone = 'Enter a valid 10-digit number starting with 0.';
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      newErrors.email = 'Enter a valid email address.';
     }
 
     if (!formData.comparisonType) {
@@ -94,7 +102,6 @@ const HomeEnergy = () => {
       {/* Form Section */}
       <section id="compare-form" className="bg-white pt-8 pb-16 min-h-screen flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-
           {/* Left Image Card */}
           <motion.div
             style={{ height: formHeight ? `${formHeight}px` : 'auto' }}
@@ -131,11 +138,11 @@ const HomeEnergy = () => {
             </h2>
 
             <form
-  onSubmit={handleSubmit}
-  action={import.meta.env.VITE_GETFORM_ENDPOINT}
-  method="POST"
-  className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
->
+              onSubmit={handleSubmit}
+              action={import.meta.env.VITE_GETFORM_ENDPOINTH}
+              method="POST"
+              className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
+            >
               <h2 className="text-2xl font-bold text-center text-[#032D4D]">Compare Energy Plans</h2>
 
               {/* Full Name */}
@@ -166,6 +173,20 @@ const HomeEnergy = () => {
                 {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
               </div>
 
+              {/* Email */}
+              <div>
+                <label className="block font-medium mb-2">Email:</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="you@example.com"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+              </div>
+
               {/* Comparison Type */}
               <div>
                 <label className="block font-medium mb-2">Choose a service:</label>
@@ -186,7 +207,7 @@ const HomeEnergy = () => {
                 {errors.comparisonType && <p className="text-red-500 text-sm mt-1">{errors.comparisonType}</p>}
               </div>
 
-              {/* Retailer Electricity */}
+              {/* Retailer Electricity (Conditional) */}
               {(formData.comparisonType === "Electricity" || formData.comparisonType === "Both") && (
                 <div>
                   <label className="block font-medium mb-2">Current Retailer Electricity:</label>
@@ -203,11 +224,13 @@ const HomeEnergy = () => {
                     <option value="Retailer D">Retailer D</option>
                     <option value="Other">Other</option>
                   </select>
-                  {errors.retailerElectricity && <p className="text-red-500 text-sm mt-1">{errors.retailerElectricity}</p>}
+                  {errors.retailerElectricity && (
+                    <p className="text-red-500 text-sm mt-1">{errors.retailerElectricity}</p>
+                  )}
                 </div>
               )}
 
-              {/* Retailer Gas */}
+              {/* Retailer Gas (Conditional) */}
               {(formData.comparisonType === "Gas" || formData.comparisonType === "Both") && (
                 <div>
                   <label className="block font-medium mb-2">Current Retailer Gas:</label>
