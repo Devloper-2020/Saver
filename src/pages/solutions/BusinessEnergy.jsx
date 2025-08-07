@@ -26,17 +26,38 @@ const BusinessEnergy = () => {
   const validate = () => {
     const newErrors = {};
 
- if (!formData.fullName.trim()) {
-    newErrors.fullName = 'Name is required.';
-  } else if (!/^[A-Za-z\s]+$/.test(formData.fullName)) {
-    newErrors.fullName = 'Name must only contain letters and spaces.';
-  }    if (!formData.phone.match(/^04\d{2} \d{3} \d{3}$/))
-      newErrors.phone = 'Phone must be in format: 04XX XXX XXX';
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = 'Name is required.';
+    } else if (!/^[A-Za-z\s]+$/.test(formData.fullName)) {
+      newErrors.fullName = 'Name must only contain letters and spaces.';
+    }
 
-    if (!formData.comparisonType) newErrors.comparisonType = 'Please select a service.';
-    if (!formData.retailerElectricity) newErrors.retailerElectricity = 'Select a retailer.';
-    if (!formData.retailerGas) newErrors.retailerGas = 'Select a retailer.';
-    if (!formData.consent) newErrors.consent = 'You must agree to be contacted.';
+    const phoneRegex = /^0\d{9}$/;
+    if (!phoneRegex.test(formData.phone.trim())) {
+      newErrors.phone = 'Enter a valid 10-digit number starting with 0.';
+    }
+
+    if (!formData.comparisonType) {
+      newErrors.comparisonType = 'Please select a service.';
+    }
+
+    if (
+      (formData.comparisonType === 'Electricity' || formData.comparisonType === 'Both') &&
+      !formData.retailerElectricity
+    ) {
+      newErrors.retailerElectricity = 'Select your electricity retailer.';
+    }
+
+    if (
+      (formData.comparisonType === 'Gas' || formData.comparisonType === 'Both') &&
+      !formData.retailerGas
+    ) {
+      newErrors.retailerGas = 'Select your gas retailer.';
+    }
+
+    if (!formData.consent) {
+      newErrors.consent = 'You must agree to be contacted.';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -48,7 +69,6 @@ const BusinessEnergy = () => {
       return;
     }
 
-    // Let Getform.io capture data then reset
     setTimeout(() => {
       formRef.current.reset();
       setFormData({
@@ -122,7 +142,7 @@ const BusinessEnergy = () => {
             </h2>
 
             <form
-              action="https://getform.io/f/bxoyddna"
+             action={import.meta.env.VITE_GETFORM_ENDPOINTB}
               method="POST"
               ref={formRef}
               onSubmit={handleFormSubmit}
@@ -150,10 +170,10 @@ const BusinessEnergy = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="04XX XXX XXX"
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-300"
+                  placeholder="0XXXXXXXXX"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
                 />
-                {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
               </div>
 
               {/* Comparison Type */}
@@ -178,47 +198,53 @@ const BusinessEnergy = () => {
                 )}
               </div>
 
-              {/* Retailer Electricity */}
-              <div>
-                <label className="block font-medium mb-2">Current Retailer Electricity:</label>
-                <select
-                  name="retailerElectricity"
-                  value={formData.retailerElectricity}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-300"
-                >
-                  <option value="">Select your current retailer</option>
-                  <option value="Retailer A">Retailer A</option>
-                  <option value="Retailer B">Retailer B</option>
-                  <option value="Retailer C">Retailer C</option>
-                  <option value="Retailer D">Retailer D</option>
-                  <option value="Other">Other</option>
-                </select>
-                {errors.retailerElectricity && (
-                  <p className="text-red-500 text-sm">{errors.retailerElectricity}</p>
-                )}
-              </div>
+              {/* Conditional Electricity Retailer */}
+              {(formData.comparisonType === 'Electricity' ||
+                formData.comparisonType === 'Both') && (
+                <div>
+                  <label className="block font-medium mb-2">Current Retailer Electricity:</label>
+                  <select
+                    name="retailerElectricity"
+                    value={formData.retailerElectricity}
+                    onChange={handleChange}
+                    className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-300"
+                  >
+                    <option value="">Select your current retailer</option>
+                    <option value="Retailer A">Retailer A</option>
+                    <option value="Retailer B">Retailer B</option>
+                    <option value="Retailer C">Retailer C</option>
+                    <option value="Retailer D">Retailer D</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  {errors.retailerElectricity && (
+                    <p className="text-red-500 text-sm">{errors.retailerElectricity}</p>
+                  )}
+                </div>
+              )}
 
-              {/* Retailer Gas */}
-              <div>
-                <label className="block font-medium mb-2">Current Retailer Gas:</label>
-                <select
-                  name="retailerGas"
-                  value={formData.retailerGas}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-300"
-                >
-                  <option value="">Select your current retailer</option>
-                  <option value="Retailer A">Retailer A</option>
-                  <option value="Retailer B">Retailer B</option>
-                  <option value="Retailer C">Retailer C</option>
-                  <option value="Retailer D">Retailer D</option>
-                  <option value="Other">Other</option>
-                </select>
-                {errors.retailerGas && (
-                  <p className="text-red-500 text-sm">{errors.retailerGas}</p>
-                )}
-              </div>
+              {/* Conditional Gas Retailer */}
+              {(formData.comparisonType === 'Gas' ||
+                formData.comparisonType === 'Both') && (
+                <div>
+                  <label className="block font-medium mb-2">Current Retailer Gas:</label>
+                  <select
+                    name="retailerGas"
+                    value={formData.retailerGas}
+                    onChange={handleChange}
+                    className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-300"
+                  >
+                    <option value="">Select your current retailer</option>
+                    <option value="Retailer A">Retailer A</option>
+                    <option value="Retailer B">Retailer B</option>
+                    <option value="Retailer C">Retailer C</option>
+                    <option value="Retailer D">Retailer D</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  {errors.retailerGas && (
+                    <p className="text-red-500 text-sm">{errors.retailerGas}</p>
+                  )}
+                </div>
+              )}
 
               {/* Consent */}
               <div className="flex items-start gap-2">
@@ -230,8 +256,8 @@ const BusinessEnergy = () => {
                   className="mt-1"
                 />
                 <label className="text-sm">
-                By ticking this box, I provide my express consent for a Utility Saver representative to contact me to review my electricity and gas bills and negotiate a supply and sale contract.
-
+                  I agree to receive calls from UtilitySaver and consent to be contacted regarding
+                  energy plans.
                 </label>
               </div>
               {errors.consent && <p className="text-red-500 text-sm">{errors.consent}</p>}
