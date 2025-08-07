@@ -507,7 +507,7 @@ const handleBack = () => {
           <option value="Retailer A">Retailer A</option>
           <option value="Retailer B">Retailer B</option>
           <option value="Retailer C">Retailer C</option>
-          <option value="Retailer D">Retailer D</option>
+          <option value="No">No</option>
           <option value="Other">Other</option>
         </select>
         {errors.retailerElectricity && (
@@ -528,7 +528,7 @@ const handleBack = () => {
           <option value="Retailer A">Retailer A</option>
           <option value="Retailer B">Retailer B</option>
           <option value="Retailer C">Retailer C</option>
-          <option value="Retailer D">Retailer D</option>
+            <option value="No">No</option>
           <option value="Other">Other</option>
         </select>
         {errors.retailerGas && (
