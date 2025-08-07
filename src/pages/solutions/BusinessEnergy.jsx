@@ -142,7 +142,7 @@ const BusinessEnergy = () => {
             </h2>
 
             <form
-              action="https://getform.io/f/bxoyddna"
+                action={import.meta.env.VITE_GETFORM_ENDPOINTB}
               method="POST"
               ref={formRef}
               onSubmit={handleFormSubmit}
