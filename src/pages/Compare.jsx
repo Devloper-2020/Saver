@@ -436,7 +436,7 @@ const handleBack = () => {
 
  <form
       id="comparison-form"
-      action="https://getform.io/f/aronkkpb"
+    action={import.meta.env.VITE_GETFORM_ENDPOINTCompare}
       method="POST"
       onSubmit={handleSubmit}
       className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
