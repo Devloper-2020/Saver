@@ -9,6 +9,7 @@ const BusinessEnergy = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
+    email: '', // ✅ New email field
     comparisonType: '',
     retailerElectricity: '',
     retailerGas: '',
@@ -35,6 +36,11 @@ const BusinessEnergy = () => {
     const phoneRegex = /^0\d{9}$/;
     if (!phoneRegex.test(formData.phone.trim())) {
       newErrors.phone = 'Enter a valid 10-digit number starting with 0.';
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      newErrors.email = 'Enter a valid email address.';
     }
 
     if (!formData.comparisonType) {
@@ -74,6 +80,7 @@ const BusinessEnergy = () => {
       setFormData({
         fullName: '',
         phone: '',
+        email: '',
         comparisonType: '',
         retailerElectricity: '',
         retailerGas: '',
@@ -142,7 +149,7 @@ const BusinessEnergy = () => {
             </h2>
 
             <form
-                action={import.meta.env.VITE_GETFORM_ENDPOINTB}
+              action={import.meta.env.VITE_GETFORM_ENDPOINTB}
               method="POST"
               ref={formRef}
               onSubmit={handleFormSubmit}
@@ -174,6 +181,20 @@ const BusinessEnergy = () => {
                   className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
                 />
                 {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block font-medium mb-2">Email:</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="your@email.com"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
 
               {/* Comparison Type */}
@@ -256,12 +277,12 @@ const BusinessEnergy = () => {
                   className="mt-1"
                 />
                 <label className="text-sm">
-                  I agree to receive calls from UtilitySaver and consent to be contacted regarding
-                  energy plans.
+                  I agree to receive calls from UtilitySaver and consent to be contacted regarding energy plans.
                 </label>
               </div>
               {errors.consent && <p className="text-red-500 text-sm">{errors.consent}</p>}
 
+              {/* Submit Button */}
               <div className="text-center">
                 <button
                   type="submit"
