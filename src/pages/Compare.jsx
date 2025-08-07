@@ -33,10 +33,12 @@ export default function Compare() {
       newErrors.fullName = "Name can only contain letters and spaces.";
     }
 
-    const phoneRegex = /^04\d{2}\s?\d{3}\s?\d{3}$/;
-    if (!phoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = "Enter a valid Australian mobile (e.g., 04XX XXX XXX).";
-    }
+   
+//Phone number 
+const phoneRegex = /^0\d{9}$/;
+if (!phoneRegex.test(formData.phone.trim())) {
+  newErrors.phone = 'Enter a valid 10-digit number starting with 0.';
+}
 
     if (!formData.comparisonType) {
       newErrors.comparisonType = "Please select a service type.";
@@ -434,7 +436,7 @@ const handleBack = () => {
 
  <form
       id="comparison-form"
-      action="https://getform.io/f/aronkkpb"
+    action={import.meta.env.VITE_GETFORM_ENDPOINTCompare}
       method="POST"
       onSubmit={handleSubmit}
       className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
@@ -457,20 +459,19 @@ const handleBack = () => {
         {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
       </div>
 
-      {/* Phone */}
-      <div>
-        <label className="block font-medium mb-2">Phone Number:</label>
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          placeholder="04XX XXX XXX"
-          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
-        />
-        {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
-      </div>
-
+   
+<div>
+  <label className="block font-medium mb-2">Phone Number:</label>
+  <input
+    type="tel"
+    name="phone"
+    value={formData.phone}
+    onChange={handleChange}
+    placeholder="0XXXXXXXXX"
+    className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+  />
+  {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+</div>
       {/* Choose a Service */}
       <div>
         <label className="block font-medium mb-2">Choose a service:</label>
@@ -506,7 +507,7 @@ const handleBack = () => {
           <option value="Retailer A">Retailer A</option>
           <option value="Retailer B">Retailer B</option>
           <option value="Retailer C">Retailer C</option>
-          <option value="Retailer D">Retailer D</option>
+          <option value="No">No</option>
           <option value="Other">Other</option>
         </select>
         {errors.retailerElectricity && (
@@ -527,7 +528,7 @@ const handleBack = () => {
           <option value="Retailer A">Retailer A</option>
           <option value="Retailer B">Retailer B</option>
           <option value="Retailer C">Retailer C</option>
-          <option value="Retailer D">Retailer D</option>
+         <option value="No">No</option>
           <option value="Other">Other</option>
         </select>
         {errors.retailerGas && (
@@ -545,8 +546,7 @@ const handleBack = () => {
           className="mt-1"
         />
         <label className="text-sm">
-       By ticking this box, I provide my express consent for a Utility Saver representative to contact me to review my electricity and gas bills and negotiate a supply and sale contract.
-
+          I agree to receive calls from UtilitySaver and consent to be contacted regarding energy plans.
         </label>
       </div>
       {errors.consent && <p className="text-red-500 text-sm">{errors.consent}</p>}
