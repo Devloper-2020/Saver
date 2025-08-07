@@ -1,2 +1,14 @@
 @import "tailwindcss";
 
+
+/* Prevent text/image selection and dragging */
+body, html {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+img {
+  pointer-events: none;
+}
