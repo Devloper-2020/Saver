@@ -228,7 +228,7 @@ export default function AboutUs() {
   <div className="max-w-6xl mx-auto text-center">
     <h2 className="text-4xl md:text-5xl font-bold mb-4">Meet Our Team</h2>
     <p className="text-lg text-gray-200 mb-12">
-      Passionate professionals driving innovation at Berg Infotech.
+      Passionate professionals driving innovation at Utility Saver.
     </p>
 
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
