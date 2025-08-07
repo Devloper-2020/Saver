@@ -224,6 +224,55 @@ export default function AboutUs() {
   </div>
 </section>
 
+<section className="bg-[#032D4D] text-white py-16 px-4 md:px-12">
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className="text-4xl md:text-5xl font-bold mb-4">Meet Our Team</h2>
+    <p className="text-lg text-gray-200 mb-12">
+      Passionate professionals driving innovation at Berg Infotech.
+    </p>
+
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+      {[
+        {
+          name: "Jagdeep",
+          email: "jagdeep@utilitysaver.com.au",
+        },
+        {
+          name: "Rekha Sharma",
+          email: "rekha.sharma@utilitysaver.com.au",
+        },
+        {
+          name: "Karan Sharma",
+          email: "karan.sharma@utilitysaver.com.au",
+        },
+        {
+          name: "Bilal Fareedzai",
+          email: "bilal.fareedzai@utilitysaver.com.au"
+        },
+        {
+          name: "Sajad Afghangzoi",
+          email: "sajad.afghanzoi@utilitysaver.com.au",
+        },
+      ].map((member, index) => (
+        <div
+          key={index}
+          className="bg-white text-[#032D4D] p-6 rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-t-4 border-blue-400"
+        >
+          <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
+          <p className="text-sm">
+            <a
+              href={`mailto:${member.email}`}
+              className="text-blue-500 hover:underline"
+            >
+              {member.email}
+            </a>
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
 
 
