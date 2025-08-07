@@ -2,10 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const HomeEnergy = () => {
-  const [step, setStep] = useState(1);
-  const [formHeight, setFormHeight] = useState(null);
-  const formRef = useRef(null);
-
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -16,12 +12,14 @@ const HomeEnergy = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [formHeight, setFormHeight] = useState(null);
+  const formRef = useRef(null);
 
   useEffect(() => {
     if (formRef.current) {
       setFormHeight(formRef.current.offsetHeight);
     }
-  }, [step]);
+  }, [formData.comparisonType]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -133,11 +131,11 @@ const HomeEnergy = () => {
             </h2>
 
             <form
-              onSubmit={handleSubmit}
-   action={import.meta.env.VITE_GETFORM_ENDPOINTH}   
-              method="POST"
-              className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
-            >
+  onSubmit={handleSubmit}
+  action={import.meta.env.VITE_GETFORM_ENDPOINT}
+  method="POST"
+  className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6"
+>
               <h2 className="text-2xl font-bold text-center text-[#032D4D]">Compare Energy Plans</h2>
 
               {/* Full Name */}
@@ -188,7 +186,7 @@ const HomeEnergy = () => {
                 {errors.comparisonType && <p className="text-red-500 text-sm mt-1">{errors.comparisonType}</p>}
               </div>
 
-              {/* Retailer Electricity (Conditional) */}
+              {/* Retailer Electricity */}
               {(formData.comparisonType === "Electricity" || formData.comparisonType === "Both") && (
                 <div>
                   <label className="block font-medium mb-2">Current Retailer Electricity:</label>
@@ -205,13 +203,11 @@ const HomeEnergy = () => {
                     <option value="Retailer D">Retailer D</option>
                     <option value="Other">Other</option>
                   </select>
-                  {errors.retailerElectricity && (
-                    <p className="text-red-500 text-sm mt-1">{errors.retailerElectricity}</p>
-                  )}
+                  {errors.retailerElectricity && <p className="text-red-500 text-sm mt-1">{errors.retailerElectricity}</p>}
                 </div>
               )}
 
-              {/* Retailer Gas (Conditional) */}
+              {/* Retailer Gas */}
               {(formData.comparisonType === "Gas" || formData.comparisonType === "Both") && (
                 <div>
                   <label className="block font-medium mb-2">Current Retailer Gas:</label>
