@@ -658,8 +658,7 @@ const validate = (formData) => {
   <div className="max-w-7xl mx-auto text-center space-y-6">
     <h2 className="text-3xl font-extrabold text-black-800">Our Range of Providers</h2>
     <p className="text-gray-600 text-base max-w-xl mx-auto">
-      We have great relationships with a wide range of Australia’s leading providers, from Energy to
-      Car Insurance and from Health Insurance to Internet. Check out our full range of providers.
+     We have great relationships with a wide range of Australia’s leading providers. Check out our full range of providers. 
     </p>
 
     {/* Marquee Style Scroll */}
