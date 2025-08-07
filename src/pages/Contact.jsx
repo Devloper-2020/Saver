@@ -200,7 +200,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <form
-            action="https://getform.io/f/allzooja"
+             action={import.meta.env.VITE_GETFORM_ENDPOINTContact}
             method="POST"
             onSubmit={handleSubmit}
             className="bg-white p-10 rounded-3xl shadow-lg border border-gray-200 space-y-8 hover:shadow-2xl transition-shadow duration-300"
