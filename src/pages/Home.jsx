@@ -235,7 +235,7 @@ const validate = (formData) => {
   {/* 🧾 Form */}
   <div>
  <form
-  action="https://getform.io/f/bdrgoezb"
+    action={import.meta.env.VITE_GETFORM_ENDPOINTC}
   method="POST"
   className="space-y-8"
 >
