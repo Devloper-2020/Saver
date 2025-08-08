@@ -606,19 +606,19 @@ const validate = (formData) => {
     <div className="w-full space-y-6">
       {[
         {
-          question: "Which energy companies can I choose from in Australia?",
+          question: "Which energy providers can I select in Australia?",
           answer: `In Australia, you have a variety of energy companies to choose from, including both large established providers and smaller, more specialized retailers.`,
         },
         {
-          question: "What’s the process to change my energy provider?",
+          question: "What steps are involved in changing my energy provider?",
           answer: `Switching energy providers is a straightforward process. Your new supplier will handle most of the logistics, including notifying your old provider and taking meter readings. You don't need to contact your old supplier directly or worry about your service being interrupted. `,
         },
         {
-          question: "How do I find the right energy plan?",
+          question: "How can I select the most suitable energy plan?" ,
           answer: `To find the right energy plan, understand your usage, compare rates, and consider contract terms. Start by analyzing your past energy bills to understand your average monthly usage. Then, compare rates from different providers .`,
         },
         {
-          question: "Why are energy prices increasing?",
+          question: "Why have energy prices gone up?" ,
           answer: `Energy prices in Australia are increasing due to a combination of factors, including high global energy prices, increased demand due to extreme weather, aging infrastructure, and network costs. `,
         },
       
