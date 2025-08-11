@@ -90,14 +90,15 @@ export default function Navbar() {
       <nav className="bg-white/90 backdrop-blur-md shadow-lg font-outfit">
      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex justify-between items-center">
 
-          {/* Logo */}
+     {/* Logo */}
    <a href="/" className="block flex-shrink-0">
   <img
-    src="/l (2).png"
+    src="/Logofinal.png"
     alt="Utility Saver Logo"
     className="h-20 w-48 object-contain"
   />
 </a>
+
 
 
           {/* Desktop Nav */}
