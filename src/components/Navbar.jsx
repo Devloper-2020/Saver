@@ -16,8 +16,8 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const email = "info@utilitysaver.com.au";
-  const phone = "AU: 0415 644 653";
+  const email = "";
+  const phone = "AU: ";
   const timings = "Mon - Sat: 9:00 AM - 6:00 PM";
 
   const socialLinks = [
