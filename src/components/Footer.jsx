@@ -40,10 +40,10 @@ export default function Footer() {
   <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
     <FiMail className="text-lg" />
     <a
-      href="mailto:info@utilitysaver.com.au"
+      href="mailto:"
       className="hover:text-white transition underline"
     >
-      info@utilitysaver.com.au
+ 
     </a>
   </div>
 
@@ -51,10 +51,10 @@ export default function Footer() {
   <div className="flex items-center text-gray-300 text-sm mb-2 space-x-2">
     <FiPhone className="text-lg" />
     <a
-      href="tel:0415644653"
+      href="tel:"
       className="hover:text-white transition underline"
     >
-      AU: 0415 644 653
+     
     </a>
   </div>
 
@@ -67,18 +67,18 @@ export default function Footer() {
       rel="noopener noreferrer"
       className="hover:text-white transition underline"
     >
-      U 32 20-22 GEORGE ST, LIVERPOOL NSW 2170
+     
     </a>
   </div>
 
   {/* ABN */}
   <div className="text-gray-300 text-sm mb-2">
-    <span>ABN: 15 688 072 639</span>
+    <span></span>
   </div>
 
   {/* ACN */}
   <div className="text-gray-300 text-sm mb-2">
-    <span>ACN: 688072639</span>
+    <span></span>
   </div>
 </div>
 
